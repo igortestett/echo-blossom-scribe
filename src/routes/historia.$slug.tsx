@@ -82,13 +82,6 @@ function StoryPage() {
           <h1 className="font-serif text-4xl md:text-6xl leading-tight mt-6 mb-8 text-balance">
             {story.title}
           </h1>
-          <div className="flex items-center justify-center gap-4 text-sm text-ink/60">
-            <span className="font-semibold text-ink">{story.author}</span>
-            <span className="text-ink/30">•</span>
-            <span>{story.date}</span>
-            <span className="text-ink/30">•</span>
-            <span>{story.readingTime}</span>
-          </div>
         </header>
 
         {/* Cover */}
@@ -120,14 +113,6 @@ function StoryPage() {
           ))}
         </div>
 
-        {/* Author footer */}
-        <div className="max-w-2xl mx-auto px-6 mt-20 pt-10 border-t border-ink/10 flex items-center gap-4">
-          <div className="size-14 rounded-full bg-stone-200 outline-1 -outline-offset-1 outline-black/5" />
-          <div>
-            <p className="text-xs uppercase tracking-widest text-ink/40">Escrito por</p>
-            <p className="font-serif text-xl">{story.author}</p>
-          </div>
-        </div>
       </article>
 
       {/* Related */}
