@@ -2,9 +2,21 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { AdSlot } from "@/components/AdSlot";
-import { stories } from "@/lib/stories";
+import type { Story } from "@/lib/stories";
+import { listStories } from "@/lib/stories.functions";
 
 export const Route = createFileRoute("/")({
+  loader: () => listStories(),
+  errorComponent: ({ error, reset }) => (
+    <div className="min-h-screen grid place-items-center p-8 text-center">
+      <div>
+        <h1 className="font-serif text-3xl mb-4">Não foi possível carregar as histórias</h1>
+        <p className="text-ink/60 mb-6 text-sm">{error.message}</p>
+        <button onClick={reset} className="text-accent underline">Tentar novamente</button>
+      </div>
+    </div>
+  ),
+  notFoundComponent: () => <div className="p-8 text-center">Nada por aqui ainda.</div>,
   head: () => ({
     meta: [
       { title: "Contos & Crônicas — Histórias para ler com calma" },
@@ -24,6 +36,19 @@ export const Route = createFileRoute("/")({
 });
 
 function Home() {
+  const stories = Route.useLoaderData();
+  if (!stories || stories.length === 0) {
+    return (
+      <div className="min-h-screen bg-paper text-ink font-sans">
+        <SiteHeader />
+        <main className="max-w-2xl mx-auto px-6 py-32 text-center">
+          <h1 className="font-serif text-4xl mb-4">Em breve</h1>
+          <p className="text-ink/60">Ainda não há histórias publicadas.</p>
+        </main>
+        <SiteFooter />
+      </div>
+    );
+  }
   const featured = stories.find((s) => s.featured) ?? stories[0];
   const rest = stories.filter((s) => s.slug !== featured.slug);
 
@@ -100,7 +125,7 @@ function Home() {
   );
 }
 
-function StoryCard({ story }: { story: (typeof stories)[number] }) {
+function StoryCard({ story }: { story: Story }) {
   return (
     <article className="group">
       <Link to="/historia/$slug" params={{ slug: story.slug }} className="block">
