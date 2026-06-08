@@ -88,6 +88,10 @@ function CategoryPage() {
             </Link>
           ))}
         </div>
+
+        <div className="mt-24 pt-12 border-t border-ink/5">
+          <AdSlot variant="large" />
+        </div>
       </main>
       <SiteFooter />
     </div>

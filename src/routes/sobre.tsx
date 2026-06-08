@@ -26,6 +26,11 @@ function SobrePage() {
   return (
     <div className="min-h-screen bg-paper text-ink font-sans">
       <SiteHeader />
+
+      <div className="max-w-6xl mx-auto px-6 pt-12">
+        <AdSlot variant="leaderboard" />
+      </div>
+
       <main className="max-w-2xl mx-auto px-6 py-20">
         <span className="text-accent font-medium text-sm tracking-widest uppercase mb-4 block">
           Sobre

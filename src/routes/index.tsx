@@ -88,6 +88,11 @@ function Home() {
         <div className="mt-24 pt-12 border-t border-ink/5">
           <AdSlot variant="large" />
         </div>
+
+        {/* Extra Bottom Ad */}
+        <div className="mt-16">
+          <AdSlot variant="leaderboard" />
+        </div>
       </main>
 
       <SiteFooter />
