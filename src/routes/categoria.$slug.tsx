@@ -2,11 +2,12 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { AdSlot } from "@/components/AdSlot";
-import { stories, type Story } from "@/lib/stories";
+import type { Story } from "@/lib/stories";
+import { listByCategory } from "@/lib/stories.functions";
 
 export const Route = createFileRoute("/categoria/$slug")({
-  loader: ({ params }): { slug: string; items: Story[]; label: string } => {
-    const items = stories.filter((s) => s.categorySlug === params.slug);
+  loader: async ({ params }): Promise<{ slug: string; items: Story[]; label: string }> => {
+    const items = await listByCategory({ data: { slug: params.slug } });
     if (items.length === 0) throw notFound();
     return { slug: params.slug, items, label: items[0].category };
   },
