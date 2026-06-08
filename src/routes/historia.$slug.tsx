@@ -2,13 +2,14 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { AdSlot } from "@/components/AdSlot";
-import { getRelatedStories, getStoryBySlug, type Story } from "@/lib/stories";
+import type { Story } from "@/lib/stories";
+import { getStory } from "@/lib/stories.functions";
 
 export const Route = createFileRoute("/historia/$slug")({
-  loader: ({ params }): { story: Story; related: Story[] } => {
-    const story = getStoryBySlug(params.slug);
+  loader: async ({ params }): Promise<{ story: Story; related: Story[] }> => {
+    const { story, related } = await getStory({ data: { slug: params.slug } });
     if (!story) throw notFound();
-    return { story, related: getRelatedStories(params.slug) };
+    return { story, related };
   },
   head: ({ loaderData }) => {
     const s = loaderData?.story;
