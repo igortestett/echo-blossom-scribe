@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import type {} from "@tanstack/react-start";
-import { stories } from "@/lib/stories";
+import { listStorySlugs } from "@/lib/stories.functions";
 
 const BASE_URL = "";
 
@@ -14,11 +14,17 @@ export const Route = createFileRoute("/sitemap.xml")({
   server: {
     handlers: {
       GET: async () => {
+        let slugs: string[] = [];
+        try {
+          slugs = await listStorySlugs();
+        } catch {
+          slugs = [];
+        }
         const entries: SitemapEntry[] = [
           { path: "/", changefreq: "weekly", priority: "1.0" },
           { path: "/sobre", changefreq: "monthly", priority: "0.5" },
-          ...stories.map((s) => ({
-            path: `/historia/${s.slug}`,
+          ...slugs.map((slug) => ({
+            path: `/historia/${slug}`,
             changefreq: "monthly" as const,
             priority: "0.8",
           })),
