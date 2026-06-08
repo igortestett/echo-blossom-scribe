@@ -36,7 +36,7 @@ export const Route = createFileRoute("/")({
 });
 
 function Home() {
-  const stories = Route.useLoaderData();
+  const stories: Story[] = Route.useLoaderData();
   if (!stories || stories.length === 0) {
     return (
       <div className="min-h-screen bg-paper text-ink font-sans">
@@ -49,8 +49,8 @@ function Home() {
       </div>
     );
   }
-  const featured = stories.find((s) => s.featured) ?? stories[0];
-  const rest = stories.filter((s) => s.slug !== featured.slug);
+  const featured = stories.find((s: Story) => s.featured) ?? stories[0];
+  const rest = stories.filter((s: Story) => s.slug !== featured.slug);
 
   return (
     <div className="min-h-screen bg-paper text-ink font-sans selection:bg-accent/10">
@@ -90,7 +90,7 @@ function Home() {
 
         {/* Grid */}
         <div className="grid md:grid-cols-3 gap-x-8 gap-y-16">
-          {rest.slice(0, 2).map((s) => (
+          {rest.slice(0, 2).map((s: Story) => (
             <StoryCard key={s.slug} story={s} />
           ))}
 
@@ -104,7 +104,7 @@ function Home() {
             </div>
           </div>
 
-          {rest.slice(2).map((s) => (
+          {rest.slice(2).map((s: Story) => (
             <StoryCard key={s.slug} story={s} />
           ))}
         </div>
