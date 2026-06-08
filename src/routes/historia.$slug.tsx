@@ -19,7 +19,7 @@ export const Route = createFileRoute("/historia/$slug")({
       meta: [
         { title: `${s.title} — Contos & Crônicas` },
         { name: "description", content: s.excerpt },
-        { name: "author", content: s.author },
+        
         { property: "og:title", content: s.title },
         { property: "og:description", content: s.excerpt },
         { property: "og:type", content: "article" },
