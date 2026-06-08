@@ -11,9 +11,6 @@ export type Story = {
   excerpt: string;
   category: string;
   categorySlug: string;
-  author: string;
-  readingTime: string;
-  date: string;
   cover: string;
   body: string[];
   featured?: boolean;
@@ -27,9 +24,6 @@ export const stories: Story[] = [
       "Uma jornada pelas vilas esquecidas da costa atlântica, onde as marés contam segredos que o tempo preferiu não registrar.",
     category: "Crônica",
     categorySlug: "cronica",
-    author: "Mariana Alencar",
-    readingTime: "12 min de leitura",
-    date: "15 de outubro de 2024",
     cover: featuredLighthouse,
     featured: true,
     body: [
@@ -47,9 +41,6 @@ export const stories: Story[] = [
       "Um envelope selado por trinta anos revela uma verdade que mudaria o destino de uma família inteira em um verão quente de agosto.",
     category: "Ficção Curta",
     categorySlug: "ficcao",
-    author: "Helena Vasconcelos",
-    readingTime: "8 min de leitura",
-    date: "08 de outubro de 2024",
     cover: storyTypewriter,
     body: [
       "O envelope estava no fundo da gaveta, debaixo de uma pilha de bilhetes de bonde já amarelados. Tinha o selo de Lisboa, o carimbo borrado, e o nome da minha avó escrito numa caligrafia que eu nunca tinha visto.",
@@ -64,9 +55,6 @@ export const stories: Story[] = [
       "Observações sobre a pressa dos transeuntes na Avenida Paulista e a beleza escondida no concreto cinza.",
     category: "Crônica",
     categorySlug: "cronica",
-    author: "Matheus Riva",
-    readingTime: "6 min de leitura",
-    date: "02 de outubro de 2024",
     cover: storyRain,
     body: [
       "Há uma coreografia secreta nos cruzamentos da Avenida Paulista. Quem nunca parou para observá-la, jura que não existe. Quem já parou, sabe que ela é a única coisa que mantém a cidade de pé.",
@@ -80,9 +68,6 @@ export const stories: Story[] = [
       "Perder-se no sul da França é encontrar um ritmo de vida que a modernidade tentou, sem sucesso, apagar.",
     category: "Viagem",
     categorySlug: "viagem",
-    author: "Beatriz Lousada",
-    readingTime: "10 min de leitura",
-    date: "24 de setembro de 2024",
     cover: storyBicycle,
     body: [
       "Em Sault, o tempo tem cheiro. De lavanda recém-cortada, de pão saindo do forno, de tinta secando num cavalete no quintal de uma casa que ainda guarda as janelas azuis dos avós.",
@@ -96,9 +81,6 @@ export const stories: Story[] = [
       "Uma metáfora sobre as peças que compõem nossa existência e como o tempo nunca é realmente linear.",
     category: "Reflexão",
     categorySlug: "reflexao",
-    author: "Marco Silva",
-    readingTime: "5 min de leitura",
-    date: "18 de setembro de 2024",
     cover: storyClock,
     body: [
       "O relojoeiro me disse, com a lupa ainda presa ao olho: 'O tempo não passa. Ele se enrosca, se sobrepõe, volta atrás quando ninguém está olhando.' Sorri, achando graça da imagem. Ele continuou sério.",
@@ -112,9 +94,6 @@ export const stories: Story[] = [
       "Conversamos com colecionadores de livros raros sobre o que torna uma história eterna.",
     category: "Entrevista",
     categorySlug: "entrevista",
-    author: "Camila Tavares",
-    readingTime: "14 min de leitura",
-    date: "10 de setembro de 2024",
     cover: storyLibrary,
     body: [
       "A primeira coisa que se nota ao entrar na casa de Otávio Brandão é o cheiro. Uma mistura de papel envelhecido, café requentado e cedro — o aroma das estantes que ele mesmo construiu há quarenta anos.",
