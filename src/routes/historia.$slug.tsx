@@ -2,10 +2,10 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { AdSlot } from "@/components/AdSlot";
-import { getRelatedStories, getStoryBySlug, stories } from "@/lib/stories";
+import { getRelatedStories, getStoryBySlug, type Story } from "@/lib/stories";
 
 export const Route = createFileRoute("/historia/$slug")({
-  loader: ({ params }) => {
+  loader: ({ params }): { story: Story; related: Story[] } => {
     const story = getStoryBySlug(params.slug);
     if (!story) throw notFound();
     return { story, related: getRelatedStories(params.slug) };
@@ -104,7 +104,7 @@ function StoryPage() {
 
         {/* Body */}
         <div className="max-w-2xl mx-auto px-6 font-serif text-lg leading-[1.85] text-ink/90 space-y-7">
-          {firstHalf.map((p, i) => (
+          {firstHalf.map((p: string, i: number) => (
             <p key={i} className={i === 0 ? "first-letter:font-black first-letter:text-6xl first-letter:float-left first-letter:mr-3 first-letter:leading-[0.9] first-letter:text-accent" : ""}>
               {p}
             </p>
@@ -115,7 +115,7 @@ function StoryPage() {
             <AdSlot variant="inline" />
           </div>
 
-          {secondHalf.map((p, i) => (
+          {secondHalf.map((p: string, i: number) => (
             <p key={i}>{p}</p>
           ))}
         </div>
@@ -134,7 +134,7 @@ function StoryPage() {
       <section className="max-w-6xl mx-auto px-6 mt-32">
         <h2 className="font-serif text-3xl mb-12 italic text-center">Continue lendo</h2>
         <div className="grid md:grid-cols-3 gap-x-8 gap-y-12">
-          {related.map((s) => (
+          {related.map((s: Story) => (
             <Link
               key={s.slug}
               to="/historia/$slug"
@@ -168,6 +168,3 @@ function StoryPage() {
     </div>
   );
 }
-
-// Keep import referenced for build (avoid tree-shake surprises in dev)
-void stories;
