@@ -49,13 +49,6 @@ function Home() {
             <p className="text-lg text-ink/70 leading-relaxed mb-8 text-pretty">
               {featured.excerpt}
             </p>
-            <div className="flex items-center gap-4">
-              <div className="size-10 rounded-full bg-stone-200 outline-1 -outline-offset-1 outline-black/5" />
-              <div>
-                <p className="text-sm font-semibold">{featured.author}</p>
-                <p className="text-xs text-ink/40">{featured.readingTime}</p>
-              </div>
-            </div>
           </div>
           <div className="order-1 md:order-2">
             <Link to="/historia/$slug" params={{ slug: featured.slug }}>
