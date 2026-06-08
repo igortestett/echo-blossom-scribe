@@ -79,7 +79,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "Contos & Crônicas — Histórias para ler com calma" },
       { name: "description", content: "Um refúgio digital para amantes da palavra escrita. Contos, crônicas, memórias e ensaios." },
-      { name: "author", content: "Contos & Crônicas" },
+      
       { property: "og:title", content: "Contos & Crônicas" },
       { property: "og:description", content: "Histórias que merecem ser lidas com calma." },
       { property: "og:type", content: "website" },
