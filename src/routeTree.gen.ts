@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as SobreRouteImport } from './routes/sobre'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as HistoriaSlugRouteImport } from './routes/historia.$slug'
+import { Route as CategoriaSlugRouteImport } from './routes/categoria.$slug'
 
 const SobreRoute = SobreRouteImport.update({
   id: '/sobre',
@@ -28,34 +29,43 @@ const HistoriaSlugRoute = HistoriaSlugRouteImport.update({
   path: '/historia/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CategoriaSlugRoute = CategoriaSlugRouteImport.update({
+  id: '/categoria/$slug',
+  path: '/categoria/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/sobre': typeof SobreRoute
+  '/categoria/$slug': typeof CategoriaSlugRoute
   '/historia/$slug': typeof HistoriaSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/sobre': typeof SobreRoute
+  '/categoria/$slug': typeof CategoriaSlugRoute
   '/historia/$slug': typeof HistoriaSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/sobre': typeof SobreRoute
+  '/categoria/$slug': typeof CategoriaSlugRoute
   '/historia/$slug': typeof HistoriaSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/sobre' | '/historia/$slug'
+  fullPaths: '/' | '/sobre' | '/categoria/$slug' | '/historia/$slug'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/sobre' | '/historia/$slug'
-  id: '__root__' | '/' | '/sobre' | '/historia/$slug'
+  to: '/' | '/sobre' | '/categoria/$slug' | '/historia/$slug'
+  id: '__root__' | '/' | '/sobre' | '/categoria/$slug' | '/historia/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   SobreRoute: typeof SobreRoute
+  CategoriaSlugRoute: typeof CategoriaSlugRoute
   HistoriaSlugRoute: typeof HistoriaSlugRoute
 }
 
@@ -82,12 +92,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HistoriaSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/categoria/$slug': {
+      id: '/categoria/$slug'
+      path: '/categoria/$slug'
+      fullPath: '/categoria/$slug'
+      preLoaderRoute: typeof CategoriaSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   SobreRoute: SobreRoute,
+  CategoriaSlugRoute: CategoriaSlugRoute,
   HistoriaSlugRoute: HistoriaSlugRoute,
 }
 export const routeTree = rootRouteImport
