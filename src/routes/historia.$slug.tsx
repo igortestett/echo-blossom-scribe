@@ -82,13 +82,6 @@ function StoryPage() {
           <h1 className="font-serif text-4xl md:text-6xl leading-tight mt-6 mb-8 text-balance">
             {story.title}
           </h1>
-          <div className="flex items-center justify-center gap-4 text-sm text-ink/60">
-            <span className="font-semibold text-ink">{story.author}</span>
-            <span className="text-ink/30">•</span>
-            <span>{story.date}</span>
-            <span className="text-ink/30">•</span>
-            <span>{story.readingTime}</span>
-          </div>
         </header>
 
         {/* Cover */}
