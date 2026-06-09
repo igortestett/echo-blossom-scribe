@@ -71,14 +71,9 @@ function StoryPage() {
     <div className="min-h-screen bg-paper text-ink font-sans selection:bg-accent/10">
       <SiteHeader />
 
-      {/* Top Ad */}
-      <div className="max-w-6xl mx-auto px-6 pt-12">
-        <AdSlot variant="leaderboard" />
-      </div>
-
       <article>
         {/* Hero */}
-        <header className="max-w-3xl mx-auto px-6 pt-16 pb-12 text-center">
+        <header className="max-w-3xl mx-auto px-6 pt-12 md:pt-16 pb-12 text-center">
           <Link
             to="/"
             className="text-xs font-semibold text-accent uppercase tracking-widest"

@@ -57,9 +57,6 @@ function Home() {
       <SiteHeader />
 
       <main className="max-w-6xl mx-auto px-6 py-12">
-        {/* Top Ad Slot */}
-        <AdSlot variant="leaderboard" className="mb-16" />
-
         {/* Featured */}
         <section className="grid md:grid-cols-2 gap-12 items-center mb-24">
           <div className="order-2 md:order-1">
@@ -90,32 +87,12 @@ function Home() {
 
         {/* Grid */}
         <div className="grid md:grid-cols-3 gap-x-8 gap-y-16">
-          {rest.slice(0, 2).map((s: Story) => (
-            <StoryCard key={s.slug} story={s} />
-          ))}
-
-          {/* Ad in grid */}
-          <div className="bg-ink/[0.02] border border-ink/5 flex flex-col items-center justify-center p-8">
-            <span className="text-[9px] uppercase tracking-widest text-ink/30 mb-4">
-              Patrocinado
-            </span>
-            <div className="w-full aspect-[3/4] bg-ink/5 border border-ink/10 flex items-center justify-center">
-              <span className="text-xs text-ink/20">AdSense Vertical</span>
-            </div>
-          </div>
-
-          {rest.slice(2).map((s: Story) => (
+          {rest.map((s: Story) => (
             <StoryCard key={s.slug} story={s} />
           ))}
         </div>
 
-        {/* Bottom Ad */}
         <div className="mt-24 pt-12 border-t border-ink/5">
-          <AdSlot variant="large" />
-        </div>
-
-        {/* Extra Bottom Ad */}
-        <div className="mt-16">
           <AdSlot variant="leaderboard" />
         </div>
       </main>

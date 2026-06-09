@@ -1,2 +1,4 @@
 User-agent: *
 Allow: /
+
+Sitemap: https://igortestett.github.io/echo-blossom-scribe/sitemap.xml

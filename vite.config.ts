@@ -9,9 +9,10 @@ import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 const REPO_NAME = "echo-blossom-scribe";
 const isGitHubPages = process.env.GITHUB_PAGES === "true";
 const siteBasePath = isGitHubPages ? `/${REPO_NAME}` : "";
-const siteOrigin = isGitHubPages
-  ? `https://igortestett.github.io/${REPO_NAME}`
-  : "http://localhost:8080";
+const siteOrigin = (
+  process.env.VITE_SITE_URL ||
+  (isGitHubPages ? `https://igortestett.github.io/${REPO_NAME}` : "http://localhost:8080")
+).replace(/\/$/, "");
 
 export default defineConfig({
   vite: {

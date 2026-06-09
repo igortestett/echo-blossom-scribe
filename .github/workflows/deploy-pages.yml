@@ -34,6 +34,12 @@ jobs:
         run: npm run build:github-pages
         env:
           GITHUB_PAGES: "true"
+          VITE_SITE_URL: https://igortestett.github.io/echo-blossom-scribe
+          VITE_ADSENSE_CLIENT_ID: ${{ secrets.VITE_ADSENSE_CLIENT_ID }}
+          VITE_ADSENSE_SLOT_LEADERBOARD: ${{ secrets.VITE_ADSENSE_SLOT_LEADERBOARD }}
+          VITE_ADSENSE_SLOT_INLINE: ${{ secrets.VITE_ADSENSE_SLOT_INLINE }}
+          VITE_ADSENSE_SLOT_LARGE: ${{ secrets.VITE_ADSENSE_SLOT_LARGE }}
+          VITE_ADSENSE_SLOT_VERTICAL: ${{ secrets.VITE_ADSENSE_SLOT_VERTICAL }}
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

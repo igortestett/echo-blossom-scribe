@@ -10,6 +10,9 @@ import {
 import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
+import { AdSenseScript } from "@/components/AdSenseScript";
+import { CookieConsent } from "@/components/CookieConsent";
+import { SITE_DESCRIPTION, SITE_NAME } from "@/lib/site";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 
 function NotFoundComponent() {
@@ -77,8 +80,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Contos & Crônicas — Histórias para ler com calma" },
-      { name: "description", content: "Um refúgio digital para amantes da palavra escrita. Contos, crônicas, memórias e ensaios." },
+      { title: `${SITE_NAME} — Histórias para ler com calma` },
+      { name: "description", content: SITE_DESCRIPTION },
       
       { property: "og:title", content: "Contos & Crônicas" },
       { property: "og:description", content: "Histórias que merecem ser lidas com calma." },
@@ -106,12 +109,29 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="pt-BR">
       <head>
         <HeadContent />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('consent', 'default', {
+                ad_storage: 'denied',
+                ad_user_data: 'denied',
+                ad_personalization: 'denied',
+                analytics_storage: 'denied',
+                wait_for_update: 500
+              });
+            `,
+          }}
+        />
       </head>
       <body>
         {children}
+        <CookieConsent />
+        <AdSenseScript />
         <Scripts />
       </body>
     </html>

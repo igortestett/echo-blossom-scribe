@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import type {} from "@tanstack/react-start";
 import { listStorySlugs } from "@/lib/stories.functions";
 
-const BASE_URL = "";
+import { getSiteUrl } from "@/lib/site";
 
 interface SitemapEntry {
   path: string;
@@ -22,7 +22,10 @@ export const Route = createFileRoute("/sitemap.xml")({
         }
         const entries: SitemapEntry[] = [
           { path: "/", changefreq: "weekly", priority: "1.0" },
-          { path: "/sobre", changefreq: "monthly", priority: "0.5" },
+          { path: "/sobre", changefreq: "monthly", priority: "0.6" },
+          { path: "/contato", changefreq: "monthly", priority: "0.5" },
+          { path: "/privacidade", changefreq: "yearly", priority: "0.4" },
+          { path: "/termos", changefreq: "yearly", priority: "0.4" },
           ...slugs.map((slug) => ({
             path: `/historia/${slug}`,
             changefreq: "monthly" as const,
@@ -30,10 +33,11 @@ export const Route = createFileRoute("/sitemap.xml")({
           })),
         ];
 
+        const baseUrl = getSiteUrl();
         const urls = entries
           .map(
             (e) =>
-              `  <url>\n    <loc>${BASE_URL}${e.path}</loc>\n    <changefreq>${e.changefreq}</changefreq>\n    <priority>${e.priority}</priority>\n  </url>`,
+              `  <url>\n    <loc>${baseUrl}${e.path}</loc>\n    <changefreq>${e.changefreq}</changefreq>\n    <priority>${e.priority}</priority>\n  </url>`,
           )
           .join("\n");
 

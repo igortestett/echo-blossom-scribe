@@ -59,8 +59,6 @@ function CategoryPage() {
           <h1 className="font-serif text-5xl md:text-6xl">{label}</h1>
         </header>
 
-        <AdSlot variant="leaderboard" className="mb-16" />
-
         <div className="grid md:grid-cols-3 gap-x-8 gap-y-16">
           {items.map((s: Story) => (
             <Link
@@ -91,7 +89,7 @@ function CategoryPage() {
         </div>
 
         <div className="mt-24 pt-12 border-t border-ink/5">
-          <AdSlot variant="large" />
+          <AdSlot variant="leaderboard" />
         </div>
       </main>
       <SiteFooter />

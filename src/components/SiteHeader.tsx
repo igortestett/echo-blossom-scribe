@@ -1,30 +1,49 @@
 import { Link } from "@tanstack/react-router";
+import { SITE_NAME } from "@/lib/site";
+
+const navLinks = [
+  { to: "/categoria/$slug" as const, params: { slug: "ficcao" }, label: "Ficção" },
+  { to: "/categoria/$slug" as const, params: { slug: "memorias" }, label: "Memórias" },
+  { to: "/sobre" as const, label: "Sobre" },
+  { to: "/contato" as const, label: "Contato" },
+];
 
 export function SiteHeader() {
   return (
-    <nav className="border-b border-ink/5 py-6 px-6 md:px-12 flex justify-between items-center">
-      <Link
-        to="/"
-        className="text-2xl font-serif font-black tracking-tighter text-accent italic"
+    <header className="border-b border-ink/5 py-6 px-6 md:px-12">
+      <nav
+        className="flex justify-between items-center gap-6"
+        aria-label="Navegação principal"
       >
-        Contos & Crônicas
-      </Link>
-      <div className="hidden md:flex gap-8 text-sm font-medium uppercase tracking-widest text-ink/60">
-        <Link to="/categoria/$slug" params={{ slug: "ficcao" }} className="hover:text-accent transition-colors">
-          Ficção
+        <Link
+          to="/"
+          className="text-2xl font-serif font-black tracking-tighter text-accent italic shrink-0"
+        >
+          {SITE_NAME}
         </Link>
-        <Link to="/categoria/$slug" params={{ slug: "memorias" }} className="hover:text-accent transition-colors">
-          Memórias
-        </Link>
-        <Link to="/sobre" className="hover:text-accent transition-colors">
-          Sobre
-        </Link>
-      </div>
-      <button className="p-2 hover:bg-ink/5 rounded-full" aria-label="Menu">
-        <span className="sr-only">Menu</span>
-        <div className="w-6 h-0.5 bg-ink mb-1.5" />
-        <div className="w-6 h-0.5 bg-ink" />
-      </button>
-    </nav>
+        <div className="hidden md:flex gap-8 text-sm font-medium uppercase tracking-widest text-ink/60">
+          {navLinks.map((link) =>
+            "params" in link ? (
+              <Link
+                key={link.label}
+                to={link.to}
+                params={link.params}
+                className="hover:text-accent transition-colors"
+              >
+                {link.label}
+              </Link>
+            ) : (
+              <Link
+                key={link.label}
+                to={link.to}
+                className="hover:text-accent transition-colors"
+              >
+                {link.label}
+              </Link>
+            ),
+          )}
+        </div>
+      </nav>
+    </header>
   );
 }
