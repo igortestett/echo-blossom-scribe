@@ -1,11 +1,9 @@
 import { copyFileSync, existsSync, mkdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
+import { getSiteConfig } from "./site-config.mjs";
 
+const { siteUrl, customDomain } = getSiteConfig();
 const outputDir = join(process.cwd(), "dist/client");
-const siteUrl = (process.env.VITE_SITE_URL || "https://igortestett.github.io/echo-blossom-scribe").replace(
-  /\/$/,
-  "",
-);
 
 mkdirSync(outputDir, { recursive: true });
 
@@ -18,6 +16,11 @@ Sitemap: ${siteUrl}/sitemap.xml
 `,
   "utf8",
 );
+
+if (customDomain) {
+  writeFileSync(join(outputDir, "CNAME"), `${customDomain}\n`, "utf8");
+  console.log(`CNAME gerado para ${customDomain}`);
+}
 
 const clientId = process.env.VITE_ADSENSE_CLIENT_ID?.trim();
 if (clientId) {

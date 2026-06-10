@@ -8,11 +8,11 @@ import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
 const REPO_NAME = "echo-blossom-scribe";
 const isGitHubPages = process.env.GITHUB_PAGES === "true";
-const siteBasePath = isGitHubPages ? `/${REPO_NAME}` : "";
-const siteOrigin = (
-  process.env.VITE_SITE_URL ||
-  (isGitHubPages ? `https://igortestett.github.io/${REPO_NAME}` : "http://localhost:8080")
-).replace(/\/$/, "");
+const defaultGithubUrl = `https://igortestett.github.io/${REPO_NAME}`;
+const siteOrigin = (process.env.VITE_SITE_URL || defaultGithubUrl).replace(/\/$/, "");
+// Com domínio próprio o site fica na raiz (/). No github.io/repo-name usa subpasta.
+const siteBasePath =
+  isGitHubPages && siteOrigin.includes("github.io") ? `/${REPO_NAME}` : "";
 
 export default defineConfig({
   vite: {
@@ -29,7 +29,9 @@ export default defineConfig({
       enabled: isGitHubPages,
     },
     spa: {
-      enabled: isGitHubPages,
+      // Domínio próprio: todas as rotas são pré-renderizadas na raiz — shell SPA desnecessário.
+      // github.io/repo: shell em / e home em /repo-name/.
+      enabled: isGitHubPages && !!siteBasePath,
     },
     sitemap: {
       enabled: isGitHubPages,
