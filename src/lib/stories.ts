@@ -25,6 +25,12 @@ export const coversBySlug: Record<string, string> = {
   "caminhos-de-lavanda": storyBicycle,
   "o-relojoeiro-do-tempo": storyClock,
   "bibliotecas-de-almas": storyLibrary,
+  "o-ultimo-onibus-da-noite": storyRain,
+  "heranca-de-papel": storyTypewriter,
+  "a-varanda-das-cinco": storyClock,
+  "trilha-alem-do-por-do-sol": storyBicycle,
+  "o-jardim-das-vozes-antigas": storyLibrary,
+  "neblina-no-porto": featuredLighthouse,
 };
 
 export function coverFor(slug: string): string {
