@@ -3,11 +3,11 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { AdSlot } from "@/components/AdSlot";
 import type { Story } from "@/lib/stories";
-import { listStories } from "@/lib/stories.functions";
+import { listStories } from "@/lib/stories.loader";
 import { useLanguage, translations, getLanguage } from "@/lib/i18n";
 
 export const Route = createFileRoute("/")({
-  loader: () => listStories({ lang: getLanguage() }),
+  loader: () => listStories(getLanguage()),
   errorComponent: ({ error, reset }) => {
     const lang = getLanguage();
     const t = translations[lang];

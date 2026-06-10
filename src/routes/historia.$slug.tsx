@@ -3,13 +3,13 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { AdSlot } from "@/components/AdSlot";
 import type { Story } from "@/lib/stories";
-import { getStory } from "@/lib/stories.functions";
+import { getStory } from "@/lib/stories.loader";
 import { useLanguage, translations, getLanguage } from "@/lib/i18n";
 
 export const Route = createFileRoute("/historia/$slug")({
   loader: async ({ params }): Promise<{ story: Story; related: Story[] }> => {
     const lang = getLanguage();
-    const { story, related } = await getStory({ data: { slug: params.slug, lang } });
+    const { story, related } = getStory(params.slug, lang);
     if (!story) throw notFound();
     return { story, related };
   },

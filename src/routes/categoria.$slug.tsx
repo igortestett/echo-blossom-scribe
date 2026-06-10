@@ -3,13 +3,13 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { AdSlot } from "@/components/AdSlot";
 import type { Story } from "@/lib/stories";
-import { listByCategory } from "@/lib/stories.functions";
+import { listByCategory } from "@/lib/stories.loader";
 import { useLanguage, translations, getLanguage } from "@/lib/i18n";
 
 export const Route = createFileRoute("/categoria/$slug")({
   loader: async ({ params }): Promise<{ slug: string; items: Story[]; label: string }> => {
     const lang = getLanguage();
-    const items = await listByCategory({ data: { slug: params.slug, lang } });
+    const items = listByCategory(params.slug, lang);
     if (items.length === 0) throw notFound();
     return { slug: params.slug, items, label: items[0].category };
   },
