@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { Link } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
 import { setStoredConsent } from "@/lib/cookie-consent";
 import { useConsentChoice } from "@/hooks/use-ad-consent";
 import { useLanguage, translations } from "@/lib/i18n";
@@ -7,10 +6,14 @@ import { useLanguage, translations } from "@/lib/i18n";
 export function CookieConsent() {
   const choice = useConsentChoice();
   const [visible, setVisible] = useState(true);
+  const [mounted, setMounted] = useState(false);
   const lang = useLanguage();
   const t = translations[lang];
 
-  if (choice !== null || !visible) return null;
+  useEffect(() => setMounted(true), []);
+
+  // Render only after hydration — prerendered shell HTML has no React event handlers.
+  if (!mounted || choice !== null || !visible) return null;
 
   return (
     <div

@@ -130,8 +130,6 @@ function RootShell({ children }: { children: ReactNode }) {
       </head>
       <body>
         {children}
-        <CookieConsent />
-        <AdSenseScript />
         <Scripts />
       </body>
     </html>
@@ -145,6 +143,8 @@ function RootComponent() {
     <QueryClientProvider client={queryClient}>
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       <Outlet />
+      <CookieConsent />
+      <AdSenseScript />
     </QueryClientProvider>
   );
 }
