@@ -4,9 +4,11 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm ci
 COPY . .
+ARG VITE_ADSENSE_CLIENT_ID
 ENV GITHUB_PAGES=true
 ENV VITE_SITE_URL=https://dramatica.blog
 ENV CUSTOM_DOMAIN=dramatica.blog
+ENV VITE_ADSENSE_CLIENT_ID=$VITE_ADSENSE_CLIENT_ID
 RUN npm run build:github-pages
 
 # Estágio 2: servir com Nginx
