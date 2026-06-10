@@ -12,6 +12,7 @@ import { useEffect, type ReactNode } from "react";
 import appCss from "../styles.css?url";
 import { AdSenseScript } from "@/components/AdSenseScript";
 import { CookieConsent } from "@/components/CookieConsent";
+import { getAdSenseClientId } from "@/lib/adsense";
 import { SITE_DESCRIPTION, SITE_NAME } from "@/lib/site";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 
@@ -108,6 +109,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 });
 
 function RootShell({ children }: { children: ReactNode }) {
+  const adSenseClientId = getAdSenseClientId();
+
   return (
     <html lang="pt-BR">
       <head>
@@ -127,6 +130,13 @@ function RootShell({ children }: { children: ReactNode }) {
             `,
           }}
         />
+        {adSenseClientId ? (
+          <script
+            async
+            src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adSenseClientId}`}
+            crossOrigin="anonymous"
+          />
+        ) : null}
       </head>
       <body>
         {children}

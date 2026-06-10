@@ -7,9 +7,17 @@ const SLOT_ENV_KEYS: Record<AdVariant, string> = {
   inline: "VITE_ADSENSE_SLOT_INLINE",
 };
 
+function readClientId(value: string | undefined): string | null {
+  return value?.trim() || null;
+}
+
 export function getAdSenseClientId(): string | null {
-  const clientId = import.meta.env.VITE_ADSENSE_CLIENT_ID as string | undefined;
-  return clientId?.trim() || null;
+  // SSR (Easypanel/Docker): runtime env pode existir sem rebuild.
+  if (import.meta.env.SSR && typeof process !== "undefined") {
+    const runtime = readClientId(process.env.VITE_ADSENSE_CLIENT_ID);
+    if (runtime) return runtime;
+  }
+  return readClientId(import.meta.env.VITE_ADSENSE_CLIENT_ID as string | undefined);
 }
 
 export function getAdSenseSlot(variant: AdVariant): string | null {
