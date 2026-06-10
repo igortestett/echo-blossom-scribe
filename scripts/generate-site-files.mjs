@@ -2,6 +2,7 @@ import { spawnSync } from "node:child_process";
 import { copyFileSync, existsSync, mkdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { getSiteConfig } from "./site-config.mjs";
+import { writeAdsTxt } from "./write-ads-txt.mjs";
 
 const SITEMAP_LANGUAGES = ["pt", "en", "es"];
 
@@ -40,22 +41,7 @@ if (customDomain) {
   console.log(`CNAME gerado para ${customDomain}`);
 }
 
-const clientId = process.env.VITE_ADSENSE_CLIENT_ID?.trim();
-if (clientId) {
-  const publisherMatch = /^ca-pub-(\d+)$/i.exec(clientId);
-  if (publisherMatch) {
-    writeFileSync(
-      join(outputDir, "ads.txt"),
-      `google.com, pub-${publisherMatch[1]}, DIRECT, f08c47fec0942fa0\n`,
-      "utf8",
-    );
-    console.log("ads.txt gerado com sucesso.");
-  } else {
-    console.warn("VITE_ADSENSE_CLIENT_ID inválido — ads.txt não foi gerado.");
-  }
-} else {
-  console.warn("VITE_ADSENSE_CLIENT_ID não definido — ads.txt não foi gerado.");
-}
+writeAdsTxt(outputDir);
 
 const sitemapResult = spawnSync(
   "node",
