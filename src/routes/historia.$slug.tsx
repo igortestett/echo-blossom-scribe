@@ -4,23 +4,36 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { AdSlot } from "@/components/AdSlot";
 import type { Story } from "@/lib/stories";
 import { getStory } from "@/lib/stories.functions";
+import { useLanguage, translations, getLanguage } from "@/lib/i18n";
 
 export const Route = createFileRoute("/historia/$slug")({
   loader: async ({ params }): Promise<{ story: Story; related: Story[] }> => {
-    const { story, related } = await getStory({ data: { slug: params.slug } });
+    const lang = getLanguage();
+    const { story, related } = await getStory({ data: { slug: params.slug, lang } });
     if (!story) throw notFound();
     return { story, related };
   },
   head: ({ loaderData }) => {
     const s = loaderData?.story;
+    const lang = getLanguage();
+    const t = translations[lang];
     if (!s) {
-      return { meta: [{ title: "História não encontrada — Contos & Crônicas" }] };
+      return {
+        meta: [
+          {
+            title: lang === "pt"
+              ? "História não encontrada — Contos & Crônicas"
+              : lang === "es"
+              ? "Historia no encontrada — Cuentos y Crónicas"
+              : "Story not found — Tales & Chronicles",
+          },
+        ],
+      };
     }
     return {
       meta: [
-        { title: `${s.title} — Contos & Crônicas` },
+        { title: `${s.title} — ${t.siteName}` },
         { name: "description", content: s.excerpt },
-        
         { property: "og:title", content: s.title },
         { property: "og:description", content: s.excerpt },
         { property: "og:type", content: "article" },
@@ -30,30 +43,44 @@ export const Route = createFileRoute("/historia/$slug")({
     };
   },
   notFoundComponent: NotFoundStory,
-  errorComponent: ({ reset }) => (
-    <div className="min-h-screen grid place-items-center p-8 text-center">
-      <div>
-        <h1 className="font-serif text-3xl mb-4">Algo deu errado</h1>
-        <button onClick={reset} className="text-accent underline">
-          Tentar novamente
-        </button>
+  errorComponent: ({ reset }) => {
+    const lang = getLanguage();
+    const t = translations[lang];
+    return (
+      <div className="min-h-screen grid place-items-center p-8 text-center bg-paper text-ink">
+        <div>
+          <h1 className="font-serif text-3xl mb-4">
+            {lang === "pt" ? "Algo deu errado" : lang === "es" ? "Algo salió mal" : "Something went wrong"}
+          </h1>
+          <button onClick={reset} className="text-accent underline">
+            {t.tryAgain}
+          </button>
+        </div>
       </div>
-    </div>
-  ),
+    );
+  },
   component: StoryPage,
 });
 
 function NotFoundStory() {
+  const lang = useLanguage();
+  const t = translations[lang];
   return (
     <div className="min-h-screen bg-paper text-ink font-sans">
       <SiteHeader />
       <main className="max-w-2xl mx-auto px-6 py-32 text-center">
-        <h1 className="font-serif text-5xl mb-6">História não encontrada</h1>
+        <h1 className="font-serif text-5xl mb-6">
+          {lang === "pt" ? "História não encontrada" : lang === "es" ? "Historia no encontrada" : "Story not found"}
+        </h1>
         <p className="text-ink/60 mb-8">
-          Talvez ela ainda não tenha sido escrita. Que tal voltar ao início?
+          {lang === "pt"
+            ? "Talvez ela ainda não tenha sido escrita. Que tal voltar ao início?"
+            : lang === "es"
+            ? "Tal vez aún no haya sido escrita. ¿Qué tal volver al inicio?"
+            : "Perhaps it hasn't been written yet. How about returning to the home page?"}
         </p>
         <Link to="/" className="text-accent uppercase text-xs font-bold tracking-widest">
-          Voltar ao início
+          {t.backToHome}
         </Link>
       </main>
       <SiteFooter />
@@ -63,6 +90,9 @@ function NotFoundStory() {
 
 function StoryPage() {
   const { story, related } = Route.useLoaderData();
+  const lang = useLanguage();
+  const t = translations[lang];
+
   const midpoint = Math.ceil(story.body.length / 2);
   const firstHalf = story.body.slice(0, midpoint);
   const secondHalf = story.body.slice(midpoint);
@@ -118,7 +148,7 @@ function StoryPage() {
 
       {/* Related */}
       <section className="max-w-6xl mx-auto px-6 mt-32">
-        <h2 className="font-serif text-3xl mb-12 italic text-center">Continue lendo</h2>
+        <h2 className="font-serif text-3xl mb-12 italic text-center">{t.relatedStories}</h2>
         <div className="grid md:grid-cols-3 gap-x-8 gap-y-12">
           {related.map((s: Story) => (
             <Link

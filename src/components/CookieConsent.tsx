@@ -2,10 +2,13 @@ import { useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { setStoredConsent } from "@/lib/cookie-consent";
 import { useConsentChoice } from "@/hooks/use-ad-consent";
+import { useLanguage, translations } from "@/lib/i18n";
 
 export function CookieConsent() {
   const choice = useConsentChoice();
   const [visible, setVisible] = useState(true);
+  const lang = useLanguage();
+  const t = translations[lang];
 
   if (choice !== null || !visible) return null;
 
@@ -19,19 +22,10 @@ export function CookieConsent() {
       <div className="max-w-4xl mx-auto flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
         <div className="text-sm text-ink/75 leading-relaxed">
           <p id="cookie-consent-title" className="font-medium text-ink mb-1">
-            Este site utiliza cookies
+            {t.cookieTitle}
           </p>
           <p id="cookie-consent-desc">
-            Usamos cookies para exibir anúncios relevantes (Google AdSense), medir o desempenho do
-            site e melhorar sua experiência. Leia nossa{" "}
-            <Link to="/privacidade" className="text-accent underline">
-              Política de Privacidade
-            </Link>{" "}
-            e{" "}
-            <Link to="/privacidade" hash="cookies" className="text-accent underline">
-              Política de Cookies
-            </Link>
-            .
+            {t.cookieDesc}
           </p>
         </div>
         <div className="flex flex-wrap gap-2 shrink-0">
@@ -43,7 +37,7 @@ export function CookieConsent() {
             }}
             className="px-4 py-2 text-xs font-medium uppercase tracking-widest border border-ink/15 rounded-sm hover:bg-ink/5 transition-colors"
           >
-            Recusar
+            {t.cookieDecline}
           </button>
           <button
             type="button"
@@ -53,7 +47,7 @@ export function CookieConsent() {
             }}
             className="px-4 py-2 text-xs font-medium uppercase tracking-widest bg-ink text-paper rounded-sm hover:bg-ink/90 transition-colors"
           >
-            Aceitar cookies
+            {t.cookieAccept}
           </button>
         </div>
       </div>

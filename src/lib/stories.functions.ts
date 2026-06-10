@@ -1,7 +1,7 @@
 import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
 import { getSql } from "./db.server";
-import { STATIC_STORIES, type StoryRecord } from "./stories.data";
+import { getStaticStoriesForLanguage, type StoryRecord } from "./stories.data";
 import { coverFor, type Story } from "./stories";
 
 type Row = {
@@ -31,21 +31,26 @@ function useStaticStories(): boolean {
   return !process.env.DATABASE_URL;
 }
 
-function sortStories(rows: StoryRecord[]): StoryRecord[] {
+function sortStories(rows: StoryRecord[], lang: "en" | "es" | "pt"): StoryRecord[] {
   return [...rows].sort((a, b) => {
     if (a.featured !== b.featured) return a.featured ? -1 : 1;
     if (a.sort_order !== b.sort_order) return a.sort_order - b.sort_order;
-    return a.title.localeCompare(b.title, "pt-BR");
+    const locale = lang === "pt" ? "pt-BR" : lang === "es" ? "es" : "en";
+    return a.title.localeCompare(b.title, locale);
   });
 }
 
-function staticStories(): Story[] {
-  return sortStories(STATIC_STORIES).map(toStory);
+function staticStories(lang: "en" | "es" | "pt"): Story[] {
+  return sortStories(getStaticStoriesForLanguage(lang), lang).map(toStory);
 }
 
-export const listStories = createServerFn({ method: "GET" }).handler(
-  async (): Promise<Story[]> => {
-    if (useStaticStories()) return staticStories();
+export const listStories = createServerFn({ method: "GET" })
+  .inputValidator((data) =>
+    z.object({ lang: z.enum(["en", "es", "pt"]).optional() }).optional().parse(data)
+  )
+  .handler(async ({ data }): Promise<Story[]> => {
+    const lang = data?.lang ?? "pt";
+    if (useStaticStories()) return staticStories(lang);
 
     const sql = getSql();
     const rows = await sql<Row[]>`
@@ -54,14 +59,21 @@ export const listStories = createServerFn({ method: "GET" }).handler(
       ORDER BY featured DESC, sort_order ASC, created_at DESC
     `;
     return rows.map(toStory);
-  },
-);
+  });
 
 export const getStory = createServerFn({ method: "GET" })
-  .inputValidator((data) => z.object({ slug: z.string().min(1).max(200) }).parse(data))
+  .inputValidator((data) =>
+    z
+      .object({
+        slug: z.string().min(1).max(200),
+        lang: z.enum(["en", "es", "pt"]).optional(),
+      })
+      .parse(data)
+  )
   .handler(async ({ data }): Promise<{ story: Story | null; related: Story[] }> => {
+    const lang = data.lang ?? "pt";
     if (useStaticStories()) {
-      const stories = staticStories();
+      const stories = staticStories(lang);
       const story = stories.find((item) => item.slug === data.slug) ?? null;
       if (!story) return { story: null, related: [] };
       const related = stories.filter((item) => item.slug !== data.slug).slice(0, 3);
@@ -83,10 +95,18 @@ export const getStory = createServerFn({ method: "GET" })
   });
 
 export const listByCategory = createServerFn({ method: "GET" })
-  .inputValidator((data) => z.object({ slug: z.string().min(1).max(100) }).parse(data))
+  .inputValidator((data) =>
+    z
+      .object({
+        slug: z.string().min(1).max(100),
+        lang: z.enum(["en", "es", "pt"]).optional(),
+      })
+      .parse(data)
+  )
   .handler(async ({ data }): Promise<Story[]> => {
+    const lang = data.lang ?? "pt";
     if (useStaticStories()) {
-      return staticStories().filter((item) => item.categorySlug === data.slug);
+      return staticStories(lang).filter((item) => item.categorySlug === data.slug);
     }
 
     const sql = getSql();
@@ -101,11 +121,12 @@ export const listByCategory = createServerFn({ method: "GET" })
 export const listStorySlugs = createServerFn({ method: "GET" }).handler(
   async (): Promise<string[]> => {
     if (useStaticStories()) {
-      return STATIC_STORIES.map((story) => story.slug);
+      // Slugs are the same across all languages, so we can just use the PT list
+      return getStaticStoriesForLanguage("pt").map((story) => story.slug);
     }
 
     const sql = getSql();
     const rows = await sql<{ slug: string }[]>`SELECT slug FROM stories`;
     return rows.map((r) => r.slug);
-  },
+  }
 );
