@@ -1,5 +1,4 @@
 import { useEffect, useRef } from "react";
-import { useAdConsent } from "@/hooks/use-ad-consent";
 import {
   getAdSenseClientId,
   getAdSenseSlot,
@@ -24,10 +23,9 @@ const sizes: Record<AdVariant, string> = {
 export function AdSlot({ variant = "leaderboard", label = "Publicidade", className = "" }: AdSlotProps) {
   const adRef = useRef<HTMLElement>(null);
   const pushed = useRef(false);
-  const consentGranted = useAdConsent();
   const clientId = getAdSenseClientId();
   const slotId = getAdSenseSlot(variant);
-  const showLiveAd = isAdSenseConfigured() && consentGranted && !!slotId;
+  const showLiveAd = isAdSenseConfigured() && !!slotId;
 
   useEffect(() => {
     if (!showLiveAd || !adRef.current || pushed.current) return;

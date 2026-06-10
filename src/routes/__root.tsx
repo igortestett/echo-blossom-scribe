@@ -10,8 +10,7 @@ import {
 import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
-import { AdSenseScript } from "@/components/AdSenseScript";
-import { CookieConsent } from "@/components/CookieConsent";
+import { GoogleCmp } from "@/components/GoogleCmp";
 import { getAdSenseClientId } from "@/lib/adsense";
 import { SITE_DESCRIPTION, SITE_NAME } from "@/lib/site";
 import { reportLovableError } from "../lib/lovable-error-reporting";
@@ -153,8 +152,7 @@ function RootComponent() {
     <QueryClientProvider client={queryClient}>
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       <Outlet />
-      <CookieConsent />
-      <AdSenseScript />
+      <GoogleCmp />
     </QueryClientProvider>
   );
 }

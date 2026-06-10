@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { CONTACT_EMAIL } from "@/lib/site";
+import { openGooglePrivacySettings } from "@/lib/google-cmp";
 import { useLanguage, translations } from "@/lib/i18n";
 
 export function SiteFooter() {
@@ -41,6 +42,13 @@ export function SiteFooter() {
             >
               {t.cookiePolicy}
             </Link>
+            <button
+              type="button"
+              onClick={openGooglePrivacySettings}
+              className="text-left hover:text-paper transition-colors"
+            >
+              {t.managePrivacySettings}
+            </button>
           </nav>
         </div>
 
