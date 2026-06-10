@@ -1,4 +1,8 @@
+export type StoryLang = "pt" | "en" | "es";
+
 export type StoryRecord = {
+  /** Idioma editorial da história (conteúdo independente por idioma). */
+  lang: StoryLang;
   slug: string;
   title: string;
   excerpt: string;
@@ -9,7 +13,9 @@ export type StoryRecord = {
   sort_order: number;
 };
 
-export const STATIC_STORIES_PT: StoryRecord[] = [
+type StoryRecordInput = Omit<StoryRecord, "lang">;
+
+export const STATIC_STORIES_PT: StoryRecordInput[] = [
   {
     slug: "onde-o-mar-encontra-o-silencio",
     title: "Onde o Mar Encontra o Silêncio",
@@ -114,7 +120,7 @@ export const STATIC_STORIES_PT: StoryRecord[] = [
   },
 ];
 
-export const STATIC_STORIES_EN: StoryRecord[] = [
+export const STATIC_STORIES_EN: StoryRecordInput[] = [
   {
     slug: "onde-o-mar-encontra-o-silencio",
     title: "Where the Sea Meets the Silence",
@@ -219,7 +225,7 @@ export const STATIC_STORIES_EN: StoryRecord[] = [
   },
 ];
 
-export const STATIC_STORIES_ES: StoryRecord[] = [
+export const STATIC_STORIES_ES: StoryRecordInput[] = [
   {
     slug: "onde-o-mar-encontra-o-silencio",
     title: "Donde el Mar Encuentra el Silencio",
@@ -326,8 +332,16 @@ export const STATIC_STORIES_ES: StoryRecord[] = [
 
 export const STATIC_STORIES = STATIC_STORIES_PT;
 
-export function getStaticStoriesForLanguage(lang: "en" | "es" | "pt"): StoryRecord[] {
-  if (lang === "en") return STATIC_STORIES_EN;
-  if (lang === "es") return STATIC_STORIES_ES;
-  return STATIC_STORIES_PT;
+function withLang(stories: Omit<StoryRecord, "lang">[], lang: StoryLang): StoryRecord[] {
+  return stories.map((story) => ({ ...story, lang }));
+}
+
+const STATIC_STORIES_PT_WITH_LANG = withLang(STATIC_STORIES_PT, "pt");
+const STATIC_STORIES_EN_WITH_LANG = withLang(STATIC_STORIES_EN, "en");
+const STATIC_STORIES_ES_WITH_LANG = withLang(STATIC_STORIES_ES, "es");
+
+export function getStaticStoriesForLanguage(lang: StoryLang): StoryRecord[] {
+  if (lang === "en") return STATIC_STORIES_EN_WITH_LANG;
+  if (lang === "es") return STATIC_STORIES_ES_WITH_LANG;
+  return STATIC_STORIES_PT_WITH_LANG;
 }

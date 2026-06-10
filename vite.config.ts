@@ -33,9 +33,9 @@ export default defineConfig({
       // github.io/repo: shell em / e home em /repo-name/.
       enabled: isGitHubPages && !!siteBasePath,
     },
+    // Sitemaps multilíngues são gerados em scripts/write-sitemaps.mjs
     sitemap: {
-      enabled: isGitHubPages,
-      host: siteOrigin,
+      enabled: false,
     },
   },
 });

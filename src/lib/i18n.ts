@@ -2,6 +2,15 @@ import { useState, useEffect } from "react";
 
 export type Language = "en" | "es" | "pt";
 
+/** Detecta idioma pelo hostname (funciona no servidor e no cliente). */
+export function getLanguageFromHost(hostname: string): Language {
+  const host = hostname.toLowerCase().split(":")[0];
+  if (host.startsWith("en.")) return "en";
+  if (host.startsWith("es.")) return "es";
+  if (host.startsWith("pt.")) return "pt";
+  return "pt";
+}
+
 // Helper para obter o idioma baseado no subdomínio ou parâmetros de busca
 export function getLanguage(): Language {
   if (typeof window === "undefined") {
@@ -24,11 +33,11 @@ export function getLanguage(): Language {
 
   // 3. Detectar com base no subdomínio (hostname)
   const hostname = window.location.hostname.toLowerCase();
-  if (hostname.startsWith("en.")) return "en";
-  if (hostname.startsWith("es.")) return "es";
-  if (hostname.startsWith("pt.")) return "pt";
+  const hasLangSubdomain =
+    hostname.startsWith("en.") || hostname.startsWith("es.") || hostname.startsWith("pt.");
+  if (hasLangSubdomain) return getLanguageFromHost(hostname);
 
-  // 4. Idioma padrão do navegador (se aplicável e compatível)
+  // 4. Idioma padrão do navegador (localhost / domínio raiz)
   const browserLang = navigator.language.slice(0, 2);
   if (browserLang === "en") return "en";
   if (browserLang === "es") return "es";
@@ -45,45 +54,6 @@ export function useLanguage() {
   }, []);
 
   return lang;
-}
-
-// Utilitário para formatar URLs mantendo o subdomínio correspondente se necessário,
-// ou simplesmente auxiliando no redirecionamento entre subdomínios.
-export function getLanguageDomain(targetLang: Language): string {
-  if (typeof window === "undefined") return "";
-
-  const currentHost = window.location.host; // ex: localhost:3000 ou en.dramatica.blog ou dramatica.blog
-  const hostnameParts = window.location.hostname.split(".");
-  const isLocalhost = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1";
-
-  if (isLocalhost) {
-    // Para localhost, mantemos o host atual e usamos o parâmetro ?lang=
-    const url = new URL(window.location.href);
-    url.searchParams.set("lang", targetLang);
-    return url.pathname + url.search;
-  }
-
-  // Se o hostname já tiver um subdomínio conhecido (en, es, pt) no início
-  const firstPart = hostnameParts[0];
-  const hasSubdomain = ["en", "es", "pt"].includes(firstPart);
-
-  let newHost = currentHost;
-  if (hasSubdomain) {
-    // Substitui o subdomínio existente
-    hostnameParts[0] = targetLang;
-    newHost = hostnameParts.join(".") + (window.location.port ? `:${window.location.port}` : "");
-  } else {
-    // Adiciona o novo subdomínio na frente (caso de dramatica.blog -> en.dramatica.blog)
-    // Se o idioma for PT, podemos optar por não colocar subdomínio (ficar dramatica.blog)
-    if (targetLang === "pt") {
-      newHost = currentHost;
-    } else {
-      newHost = `${targetLang}.${currentHost}`;
-    }
-  }
-
-  const protocol = window.location.protocol;
-  return `${protocol}//${newHost}${window.location.pathname}${window.location.search}`;
 }
 
 // Dicionário completo de traduções para toda a interface do site
@@ -148,9 +118,6 @@ export const translations = {
     relatedStories: "Leia também",
     backToHome: "Voltar para o início",
     byCategory: "Histórias em",
-
-    // Seletor de Idioma
-    changeLanguage: "Selecionar Idioma"
   },
   en: {
     siteName: "Tales & Chronicles",
@@ -212,9 +179,6 @@ export const translations = {
     relatedStories: "Recommended reading",
     backToHome: "Back to home",
     byCategory: "Stories in",
-
-    // Language Selector
-    changeLanguage: "Select Language"
   },
   es: {
     siteName: "Cuentos y Crónicas",
@@ -276,8 +240,5 @@ export const translations = {
     relatedStories: "Lecturas recomendadas",
     backToHome: "Volver al inicio",
     byCategory: "Historias en",
-
-    // Language Selector
-    changeLanguage: "Seleccionar Idioma"
   }
 };

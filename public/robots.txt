@@ -2,3 +2,5 @@ User-agent: *
 Allow: /
 
 Sitemap: https://dramatica.blog/sitemap.xml
+Sitemap: https://en.dramatica.blog/sitemap.xml
+Sitemap: https://es.dramatica.blog/sitemap.xml

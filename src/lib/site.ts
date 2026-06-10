@@ -13,3 +13,7 @@ export function getSiteUrl(): string {
   if (typeof window !== "undefined") return window.location.origin;
   return "https://dramatica.blog";
 }
+
+export function getApexDomain(): string {
+  return new URL(getSiteUrl()).hostname;
+}

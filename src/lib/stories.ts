@@ -16,9 +16,8 @@ export type Story = {
   featured?: boolean;
 };
 
-// Cover images live in code, keyed by slug. The DB owns everything else.
-// Add an entry here when you add a new story to the DB; falls back to a
-// generic cover otherwise.
+// Cover images live in code, keyed by slug.
+// Add an entry here when you publish a new story; falls back to a generic cover otherwise.
 export const coversBySlug: Record<string, string> = {
   "onde-o-mar-encontra-o-silencio": featuredLighthouse,
   "a-ultima-carta-de-lisboa": storyTypewriter,
