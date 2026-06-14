@@ -1,8 +1,8 @@
-import * as orquestra from "./a-orquestra-dos-ventos";
-import * as mares from "./o-arquivo-das-mares-baixas";
-import * as sala from "./sala-de-espera-do-mundo";
-import * as muralhas from "./as-muralhas-de-sal";
-import * as cafe from "./o-cafe-da-meia-luz";
+import * as orquestra from "./a-orquestra-dos-ventos.ts";
+import * as mares from "./o-arquivo-das-mares-baixas.ts";
+import * as sala from "./sala-de-espera-do-mundo.ts";
+import * as muralhas from "./as-muralhas-de-sal.ts";
+import * as cafe from "./o-cafe-da-meia-luz.ts";
 
 type StoryRecordInput = {
   slug: string;

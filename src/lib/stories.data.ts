@@ -1,4 +1,4 @@
-import { NEW_STORIES_EN, NEW_STORIES_ES, NEW_STORIES_PT } from "./stories-content";
+import { NEW_STORIES_EN, NEW_STORIES_ES, NEW_STORIES_PT } from "./stories-content/index.ts";
 
 export type StoryLang = "pt" | "en" | "es";
 
