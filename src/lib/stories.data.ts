@@ -1,3 +1,5 @@
+import { NEW_STORIES_EN, NEW_STORIES_ES, NEW_STORIES_PT } from "./stories-content";
+
 export type StoryLang = "pt" | "en" | "es";
 
 export type StoryRecord = {
@@ -305,6 +307,7 @@ export const STATIC_STORIES_PT: StoryRecordInput[] = [
       "Parou de procurar explicação racional. Passou a escrever quando chovia: medos, gratidões, receitas, pedidos de desculpa. As respostas não chegavam sempre. Mas, quando chegavam, a casa de esquina parecia, pela primeira vez, habitada por duas pessoas.",
     ],
   },
+  ...NEW_STORIES_PT,
 ];
 
 export const STATIC_STORIES_EN: StoryRecordInput[] = [
@@ -597,6 +600,7 @@ export const STATIC_STORIES_EN: StoryRecordInput[] = [
       "She stopped looking for a rational explanation. She began to write when it rained: fears, thanks, recipes, apologies. The replies didn't always come. But when they did, the corner house seemed, for the first time, inhabited by two people.",
     ],
   },
+  ...NEW_STORIES_EN,
 ];
 
 export const STATIC_STORIES_ES: StoryRecordInput[] = [
@@ -889,6 +893,7 @@ export const STATIC_STORIES_ES: StoryRecordInput[] = [
       "Dejó de buscar una explicación racional. Empezó a escribir cuando llovía: miedos, gratitudes, recetas, disculpas. Las respuestas no siempre llegaban. Pero cuando llegaban, la casa de esquina parecía, por primera vez, habitada por dos personas.",
     ],
   },
+  ...NEW_STORIES_ES,
 ];
 
 export const STATIC_STORIES = STATIC_STORIES_PT;
