@@ -220,6 +220,91 @@ export const STATIC_STORIES_PT: StoryRecordInput[] = [
       "Antônio não embarcou. Colocou a bússola no bolso e, quando a neblina se dissipou, o navio já não estava. Mas o cais cheirava, pela primeira vez em anos, a casa.",
     ],
   },
+  {
+    slug: "a-estacao-dos-ecos",
+    title: "A Estação dos Ecos",
+    excerpt:
+      "Numa estação de trem quase deserta, passageiros ouvem conversas que não são de agora — e um bilheteiro aprende a distinguir o que é memória do que é destino.",
+    category: "Ficção",
+    category_slug: "ficcao",
+    featured: false,
+    sort_order: 13,
+    body: [
+      "A estação tinha um relógio parado e um bilheteiro que nunca parecia surpreso. Ricardo trabalhava ali há vinte anos e dizia que o lugar guardava vozes como paredes guardam umidade.",
+      "Na primeira noite de inverno, uma mulher desceu do trem chorando e pediu passagem para uma cidade que não constava no painel. Ricardo não hesitou. Imprimiu um bilhete em branco e disse: «Escute antes de embarcar.»",
+      "Ela escutou. Entre dois anúncios distorcidos, ouviu a própria voz de criança pedindo desculpa a alguém que já não estava vivo. O eco não repetia o passado — devolvia o que faltava dizer.",
+      "Outros vieram depois. Cada um ouvia algo diferente: um pedido de socorro, uma receita ditada pela avó, um «eu te amo» que nunca saiu do peito. Ricardo anotava os horários num caderno sem explicar por quê.",
+      "Quando a estação foi fechada para reforma, encontraram o caderno. Não havia nomes, só horários e uma frase repetida: «Alguns trens não levam para longe. Levam para dentro.»",
+    ],
+  },
+  {
+    slug: "o-atelier-das-luas",
+    title: "O Ateliê das Luas",
+    excerpt:
+      "Uma pintora só trabalha à noite, reproduzindo fases da lua que ninguém mais lembra — até um visitante reconhecer, num quadro, o céu do dia em que perdeu alguém.",
+    category: "Ficção",
+    category_slug: "ficcao",
+    featured: false,
+    sort_order: 14,
+    body: [
+      "O ateliê ficava no último andar de um prédio antigo, sem placa na porta. Beatriz pintava exclusivamente luas: crescentes raras, luas cheias que nunca existiram, quartos minguantes de datas esquecidas.",
+      "Não vendia para galerias. Vendia para quem chegava com uma data na mão e uma história mal contada. «Não pinto o céu», dizia. «Pinto o que ficou pendurado nele.»",
+      "Tomás entrou numa terça-feira molhada com a data do funeral da mãe. Beatriz preparou a tela em silêncio, misturou azuis que pareciam respirar e, ao entardecer, revelou uma lua baixa sobre um campo que ele jurava conhecer.",
+      "Tomás chorou sem vergonha. Não era o campo da infância — era o campo da despedida que ele não teve coragem de atravessar. A pintura não trazia a mãe de volta; trazia o instante em que ele ainda podia dizer adeus.",
+      "Quando saiu, a rua estava iluminada por uma lua comum. Beatriz fechou o ateliê e guardou os pincéis. Havia noites em que pintar era apenas escutar quem bate à porta sem saber o que pedir.",
+    ],
+  },
+  {
+    slug: "cartografia-do-cheiro",
+    title: "Cartografia do Cheiro",
+    excerpt:
+      "Uma perfumista aposentada mapeia a infância em frascos rotulados — e descobre que certos aromas só se abrem quando alguém está pronto para lembrar.",
+    category: "Memórias",
+    category_slug: "memorias",
+    featured: false,
+    sort_order: 15,
+    body: [
+      "Dona Fernanda não guardava joias. Guardava cheiros em frascos de vidro âmbar, cada um com uma etiqueta de caligrafia firme: «domingo de chuva», «primeiro dia de aula», «cozinha da vó, 1974».",
+      "A neta Júlia achava exagero até herdar a coleção. Abriu um frasco ao acaso — terra molhada e ferro quente — e foi tomada por uma memória que não era dela: o quintal onde a avó plantara tomates antes de mudar de cidade.",
+      "Fernanda, ainda viva, explicou sem mistério: «Cheiro não mente. Só espera a pessoa certa.» Júlia passou semanas reorganizando os frascos num mapa desenhado à mão, ligando aromas a ruas, estações e silêncios.",
+      "No centro do mapa, um frasco sem rótulo. Fernanda disse que só seria nomeado quando Júlia encontrasse o cheiro que faltava na própria vida. Levou meses. Veio numa tarde de café derramado no sofá novo: medo e alívio misturados.",
+      "Rotularam juntas: «o dia em que parei de fugir». O mapa ficou na parede da sala. Visitantes perguntavam se era arte. Júlia respondia que era endereço — o tipo de endereço que não aparece em aplicativos.",
+    ],
+  },
+  {
+    slug: "o-telescopio-de-vidro",
+    title: "O Telescópio de Vidro",
+    excerpt:
+      "No terraço de um prédio esquecido, um astrônomo amador enxerga nas estrelas mensagens em código — e percebe que o remetente pode estar mais perto do que o céu.",
+    category: "Ficção",
+    category_slug: "ficcao",
+    featured: false,
+    sort_order: 16,
+    body: [
+      "Eduardo montava o telescópio de vidro toda vez que o céu limpava. Era peça única, herdada de um tio que jurava falar com constelações. Os vizinhos achavam bonito. Eduardo achava necessário.",
+      "Na terceira semana de observação, notou um padrão: estrelas piscando em sequência, como morse celestial. Anotou, decifrou, traduziu. As mensagens eram curtas: «ainda aqui», «olhe para baixo», «não está sozinho».",
+      "Chamou uma amiga física. Ela riu, depois calou. O padrão não era aleatório — mas também não vinha de satélites conhecidos. Vinha de reflexos: luz urbana batendo em janelas de um prédio em frente, sincronizada por alguém.",
+      "No outro terraço, uma menina de doze anos segurava um espelho e um caderno. Não buscava fama. Buscava companhia para noites em que a mãe trabalhava até tarde. «Pensei que ninguém olhava para cima», disse ela.",
+      "Eduardo desceu com chocolate quente. Passaram a conversar por luz e papel. O telescópio de vidro continuou apontado para o céu — mas Eduardo, enfim, entendeu o tio: às vezes, o universo responde na janela ao lado.",
+    ],
+  },
+  {
+    slug: "correspondencia-de-chuva",
+    title: "Correspondência de Chuva",
+    excerpt:
+      "Sempre que chove, cartas aparecem na caixa de correio de uma casa de esquina — endereçadas a quem mora ali, mesmo quando a casa está vazia.",
+    category: "Memórias",
+    category_slug: "memorias",
+    featured: false,
+    sort_order: 17,
+    body: [
+      "A casa de esquina estava fechada há dois anos quando Laura alugou o apartamento dos fundos. Na primeira chuva forte, ouviu a tampa da caixa de correio bater três vezes.",
+      "Dentro, uma carta sem selo e sem remetente: «Se você leu isto, é porque voltou a escutar.» A letra era da mãe, morta antes de Laura terminar a faculdade. O papel cheirava a lavanda e tinta azul.",
+      "Ela quase chamou a polícia. Quase. Guardou a carta num livro e esperou a próxima chuva. Veio uma semana depois, com outra mensagem: «Não precisa acreditar. Só precisa responder.»",
+      "Laura respondeu na janela, com giz, numa noite de garoa. Não sabia para quem. Na manhã seguinte, encontrou na caixa um desenho de bicicleta vermelha — a mesma que aprendera a andar sem rodinhas.",
+      "Parou de procurar explicação racional. Passou a escrever quando chovia: medos, gratidões, receitas, pedidos de desculpa. As respostas não chegavam sempre. Mas, quando chegavam, a casa de esquina parecia, pela primeira vez, habitada por duas pessoas.",
+    ],
+  },
 ];
 
 export const STATIC_STORIES_EN: StoryRecordInput[] = [
@@ -427,6 +512,91 @@ export const STATIC_STORIES_EN: StoryRecordInput[] = [
       "Antônio didn't board. He put the compass in his pocket and, when the fog lifted, the ship was gone. But the dock smelled, for the first time in years, like home.",
     ],
   },
+  {
+    slug: "a-estacao-dos-ecos",
+    title: "The Station of Echoes",
+    excerpt:
+      "In a nearly deserted train station, passengers hear conversations that are not from now — and a ticket clerk learns to tell memory apart from destination.",
+    category: "Fiction",
+    category_slug: "ficcao",
+    featured: false,
+    sort_order: 13,
+    body: [
+      "The station had a stopped clock and a ticket clerk who never seemed surprised. Ricardo had worked there for twenty years and said the place kept voices the way walls keep dampness.",
+      "On the first winter night, a woman stepped off the train crying and asked for a ticket to a city not listed on the board. Ricardo didn't hesitate. He printed a blank ticket and said: 'Listen before you board.'",
+      "She listened. Between two distorted announcements, she heard her own childhood voice apologizing to someone no longer alive. The echo didn't repeat the past — it returned what was left unsaid.",
+      "Others came afterward. Each heard something different: a cry for help, a recipe dictated by a grandmother, an 'I love you' that never left the chest. Ricardo noted the times in a notebook without explaining why.",
+      "When the station closed for renovation, they found the notebook. There were no names, only times and one repeated sentence: 'Some trains don't take you far. They take you inward.'",
+    ],
+  },
+  {
+    slug: "o-atelier-das-luas",
+    title: "The Moon Studio",
+    excerpt:
+      "A painter works only at night, reproducing moon phases nobody else remembers — until a visitor recognizes, in one canvas, the sky from the day they lost someone.",
+    category: "Fiction",
+    category_slug: "ficcao",
+    featured: false,
+    sort_order: 14,
+    body: [
+      "The studio was on the top floor of an old building, with no sign on the door. Beatriz painted only moons: rare crescents, full moons that never existed, waning quarters from forgotten dates.",
+      "She didn't sell to galleries. She sold to those who arrived with a date in hand and a poorly told story. 'I don't paint the sky,' she said. 'I paint what got caught in it.'",
+      "Tomás came in on a rainy Tuesday with the date of his mother's funeral. Beatriz prepared the canvas in silence, mixed blues that seemed to breathe and, at dusk, revealed a low moon over a field he swore he knew.",
+      "Tomás cried without shame. It wasn't his childhood field — it was the field of the farewell he hadn't had the courage to cross. The painting didn't bring his mother back; it brought back the instant when he could still say goodbye.",
+      "When he left, the street was lit by an ordinary moon. Beatriz closed the studio and put away her brushes. Some nights, painting was simply listening to whoever knocked without knowing what to ask for.",
+    ],
+  },
+  {
+    slug: "cartografia-do-cheiro",
+    title: "Scent Cartography",
+    excerpt:
+      "A retired perfumer maps childhood in labeled vials — and discovers that certain aromas only open when someone is ready to remember.",
+    category: "Memories",
+    category_slug: "memorias",
+    featured: false,
+    sort_order: 15,
+    body: [
+      "Dona Fernanda didn't keep jewelry. She kept scents in amber glass vials, each with a firm handwritten label: 'rainy Sunday', 'first day of school', 'grandma's kitchen, 1974'.",
+      "Her granddaughter Júlia thought it excessive until she inherited the collection. She opened a vial at random — wet earth and hot iron — and was seized by a memory that wasn't hers: the backyard where her grandmother had planted tomatoes before moving away.",
+      "Fernanda, still alive, explained without mystery: 'Scent doesn't lie. It just waits for the right person.' Júlia spent weeks reorganizing the vials on a hand-drawn map, linking aromas to streets, seasons, and silences.",
+      "At the center of the map, an unlabeled vial. Fernanda said it would only be named when Júlia found the scent missing from her own life. It took months. It came on an afternoon of coffee spilled on a new sofa: fear and relief mixed together.",
+      "They labeled it together: 'the day I stopped running away.' The map hung on the living room wall. Visitors asked if it was art. Júlia answered that it was an address — the kind that doesn't show up in apps.",
+    ],
+  },
+  {
+    slug: "o-telescopio-de-vidro",
+    title: "The Glass Telescope",
+    excerpt:
+      "On the terrace of a forgotten building, an amateur astronomer sees coded messages in the stars — and realizes the sender may be closer than the sky.",
+    category: "Fiction",
+    category_slug: "ficcao",
+    featured: false,
+    sort_order: 16,
+    body: [
+      "Eduardo set up the glass telescope whenever the sky cleared. It was a one-of-a-kind piece, inherited from an uncle who swore he spoke with constellations. Neighbors found it charming. Eduardo found it necessary.",
+      "In the third week of observation, he noticed a pattern: stars blinking in sequence, like celestial Morse code. He wrote it down, deciphered it, translated it. The messages were short: 'still here', 'look down', 'you're not alone'.",
+      "He called a physicist friend. She laughed, then went quiet. The pattern wasn't random — but it didn't come from known satellites either. It came from reflections: urban light bouncing off windows in the building across the way, synchronized by someone.",
+      "On the other terrace, a twelve-year-old girl held a mirror and a notebook. She wasn't seeking fame. She was seeking company on nights when her mother worked late. 'I thought nobody looked up,' she said.",
+      "Eduardo went down with hot chocolate. They began to talk by light and paper. The glass telescope kept pointing at the sky — but Eduardo finally understood his uncle: sometimes the universe answers in the window next door.",
+    ],
+  },
+  {
+    slug: "correspondencia-de-chuva",
+    title: "Rain Correspondence",
+    excerpt:
+      "Whenever it rains, letters appear in the mailbox of a corner house — addressed to whoever lives there, even when the house is empty.",
+    category: "Memories",
+    category_slug: "memorias",
+    featured: false,
+    sort_order: 17,
+    body: [
+      "The corner house had been closed for two years when Laura rented the back apartment. On the first heavy rain, she heard the mailbox lid bang three times.",
+      "Inside, a letter with no stamp and no sender: 'If you're reading this, it's because you started listening again.' The handwriting was her mother's, dead before Laura finished college. The paper smelled of lavender and blue ink.",
+      "She almost called the police. Almost. She kept the letter in a book and waited for the next rain. It came a week later, with another message: 'You don't have to believe. You just have to answer.'",
+      "Laura answered at the window, with chalk, on a drizzly night. She didn't know to whom. The next morning, she found a drawing of a red bicycle in the mailbox — the same one she had learned to ride without training wheels.",
+      "She stopped looking for a rational explanation. She began to write when it rained: fears, thanks, recipes, apologies. The replies didn't always come. But when they did, the corner house seemed, for the first time, inhabited by two people.",
+    ],
+  },
 ];
 
 export const STATIC_STORIES_ES: StoryRecordInput[] = [
@@ -632,6 +802,91 @@ export const STATIC_STORIES_ES: StoryRecordInput[] = [
       "Fue entonces cuando vio el barco: casco alto, cuerdas gruesas, nombre pintado en letras que solo recordaba haber leído en sueños de infancia. El mismo barco de su padre, perdido décadas antes en un viaje sin retorno.",
       "Corrió hasta el borde. La escalera estaba bajada. En cubierta, nadie — solo una brújula antigua y un billete: «Lleve a quien necesite volver.»",
       "Antônio no embarcó. Guardó la brújula en el bolsillo y, cuando la niebla se disipó, el barco ya no estaba. Pero el muelle olía, por primera vez en años, a hogar.",
+    ],
+  },
+  {
+    slug: "a-estacao-dos-ecos",
+    title: "La Estación de los Ecos",
+    excerpt:
+      "En una estación de tren casi desierta, los pasajeros escuchan conversaciones que no son de ahora — y un taquillero aprende a distinguir la memoria del destino.",
+    category: "Ficción",
+    category_slug: "ficcao",
+    featured: false,
+    sort_order: 13,
+    body: [
+      "La estación tenía un reloj detenido y un taquillero que nunca parecía sorprendido. Ricardo trabajaba allí desde hacía veinte años y decía que el lugar guardaba voces como las paredes guardan la humedad.",
+      "En la primera noche de invierno, una mujer bajó del tren llorando y pidió pasaje a una ciudad que no figuraba en el panel. Ricardo no dudó. Imprimió un billete en blanco y dijo: «Escuche antes de embarcar.»",
+      "Ella escuchó. Entre dos anuncios distorsionados, oyó su propia voz de niña pidiendo perdón a alguien que ya no estaba vivo. El eco no repetía el pasado — devolvía lo que faltaba decir.",
+      "Otros vinieron después. Cada uno oía algo distinto: un pedido de ayuda, una receta dictada por la abuela, un «te quiero» que nunca salió del pecho. Ricardo anotaba los horarios en un cuaderno sin explicar por qué.",
+      "Cuando cerraron la estación para reformarla, encontraron el cuaderno. No había nombres, solo horarios y una frase repetida: «Algunos trenes no llevan lejos. Llevan hacia adentro.»",
+    ],
+  },
+  {
+    slug: "o-atelier-das-luas",
+    title: "El Taller de las Lunas",
+    excerpt:
+      "Una pintora solo trabaja de noche, reproduciendo fases lunares que nadie más recuerda — hasta que un visitante reconoce, en un cuadro, el cielo del día en que perdió a alguien.",
+    category: "Ficción",
+    category_slug: "ficcao",
+    featured: false,
+    sort_order: 14,
+    body: [
+      "El taller estaba en el último piso de un edificio antiguo, sin placa en la puerta. Beatriz pintaba exclusivamente lunas: crecientes raras, lunas llenas que nunca existieron, cuartos menguantes de fechas olvidadas.",
+      "No vendía a galerías. Vendía a quien llegaba con una fecha en la mano y una historia mal contada. «No pinto el cielo», decía. «Pinto lo que quedó colgado en él.»",
+      "Tomás entró un martes lluvioso con la fecha del funeral de su madre. Beatriz preparó el lienzo en silencio, mezcló azules que parecían respirar y, al atardecer, reveló una luna baja sobre un campo que juraba conocer.",
+      "Tomás lloró sin vergüenza. No era el campo de la infancia — era el campo de la despedida que no tuvo valor de atravesar. La pintura no devolvió a su madre; devolvió el instante en que aún podía decir adiós.",
+      "Cuando salió, la calle estaba iluminada por una luna común. Beatriz cerró el taller y guardó los pinceles. Había noches en que pintar era solo escuchar a quien llama sin saber qué pedir.",
+    ],
+  },
+  {
+    slug: "cartografia-do-cheiro",
+    title: "Cartografía del Olor",
+    excerpt:
+      "Una perfumista jubilada mapea la infancia en frascos etiquetados — y descubre que ciertos aromas solo se abren cuando alguien está listo para recordar.",
+    category: "Memorias",
+    category_slug: "memorias",
+    featured: false,
+    sort_order: 15,
+    body: [
+      "Dona Fernanda no guardaba joyas. Guardaba olores en frascos de vidrio ámbar, cada uno con una etiqueta de caligrafía firme: «domingo de lluvia», «primer día de clase», «cocina de la abuela, 1974».",
+      "La nieta Júlia lo encontró exagerado hasta heredar la colección. Abrió un frasco al azar — tierra mojada y hierro caliente — y fue tomada por un recuerdo que no era suyo: el patio donde la abuela plantó tomates antes de mudarse.",
+      "Fernanda, aún viva, explicó sin misterio: «El olor no miente. Solo espera a la persona correcta.» Júlia pasó semanas reorganizando los frascos en un mapa dibujado a mano, uniendo aromas con calles, estaciones y silencios.",
+      "En el centro del mapa, un frasco sin etiqueta. Fernanda dijo que solo sería nombrado cuando Júlia encontrara el olor que faltaba en su propia vida. Tardó meses. Llegó una tarde de café derramado en el sofá nuevo: miedo y alivio mezclados.",
+      "La etiquetaron juntas: «el día en que dejé de huir». El mapa quedó en la pared de la sala. Los visitantes preguntaban si era arte. Júlia respondía que era una dirección — del tipo que no aparece en aplicaciones.",
+    ],
+  },
+  {
+    slug: "o-telescopio-de-vidro",
+    title: "El Telescopio de Vidrio",
+    excerpt:
+      "En la terraza de un edificio olvidado, un astrónomo aficionado ve mensajes en código en las estrellas — y comprende que el remitente puede estar más cerca que el cielo.",
+    category: "Ficción",
+    category_slug: "ficcao",
+    featured: false,
+    sort_order: 16,
+    body: [
+      "Eduardo montaba el telescopio de vidrio cada vez que el cielo se despejaba. Era una pieza única, heredada de un tío que juraba hablar con constelaciones. Los vecinos lo encontraban bonito. Eduardo lo encontraba necesario.",
+      "En la tercera semana de observación, notó un patrón: estrellas parpadeando en secuencia, como morse celestial. Anotó, descifró, tradujo. Los mensajes eran breves: «aún aquí», «mira abajo», «no estás solo».",
+      "Llamó a una amiga física. Se rió, luego calló. El patrón no era aleatorio — pero tampoco venía de satélites conocidos. Venía de reflejos: luz urbana rebotando en ventanas del edificio de enfrente, sincronizada por alguien.",
+      "En la otra terraza, una niña de doce años sostenía un espejo y un cuaderno. No buscaba fama. Buscaba compañía en noches en que su madre trabajaba hasta tarde. «Pensé que nadie miraba hacia arriba», dijo.",
+      "Eduardo bajó con chocolate caliente. Empezaron a conversar por luz y papel. El telescopio de vidrio siguió apuntando al cielo — pero Eduardo, por fin, entendió a su tío: a veces el universo responde en la ventana de al lado.",
+    ],
+  },
+  {
+    slug: "correspondencia-de-chuva",
+    title: "Correspondencia de Lluvia",
+    excerpt:
+      "Siempre que llueve, cartas aparecen en el buzón de una casa de esquina — dirigidas a quien vive allí, incluso cuando la casa está vacía.",
+    category: "Memorias",
+    category_slug: "memorias",
+    featured: false,
+    sort_order: 17,
+    body: [
+      "La casa de esquina llevaba dos años cerrada cuando Laura alquiló el apartamento del fondo. En la primera lluvia fuerte, oyó golpear tres veces la tapa del buzón.",
+      "Dentro, una carta sin sello ni remitente: «Si lees esto, es porque volviste a escuchar.» La letra era de su madre, muerta antes de que Laura terminara la universidad. El papel olía a lavanda y tinta azul.",
+      "Casi llamó a la policía. Casi. Guardó la carta en un libro y esperó la próxima lluvia. Llegó una semana después, con otro mensaje: «No necesitas creer. Solo necesitas responder.»",
+      "Laura respondió en la ventana, con tiza, en una noche de llovizna. No sabía a quién. A la mañana siguiente, encontró en el buzón un dibujo de bicicleta roja — la misma con la que aprendió a andar sin rueditas.",
+      "Dejó de buscar una explicación racional. Empezó a escribir cuando llovía: miedos, gratitudes, recetas, disculpas. Las respuestas no siempre llegaban. Pero cuando llegaban, la casa de esquina parecía, por primera vez, habitada por dos personas.",
     ],
   },
 ];

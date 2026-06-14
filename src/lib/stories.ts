@@ -31,6 +31,11 @@ export const coversBySlug: Record<string, string> = {
   "trilha-alem-do-por-do-sol": storyBicycle,
   "o-jardim-das-vozes-antigas": storyLibrary,
   "neblina-no-porto": featuredLighthouse,
+  "a-estacao-dos-ecos": storyClock,
+  "o-atelier-das-luas": featuredLighthouse,
+  "cartografia-do-cheiro": storyLibrary,
+  "o-telescopio-de-vidro": featuredLighthouse,
+  "correspondencia-de-chuva": storyRain,
 };
 
 export function coverFor(slug: string): string {
