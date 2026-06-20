@@ -3,6 +3,7 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { AdSlot } from "@/components/AdSlot";
 import type { Story } from "@/lib/stories";
+import { absoluteCoverUrl } from "@/lib/stories";
 import { getStory } from "@/lib/stories.loader";
 import { useLanguage, translations, getLanguage } from "@/lib/i18n";
 
@@ -37,8 +38,8 @@ export const Route = createFileRoute("/historia/$slug")({
         { property: "og:title", content: s.title },
         { property: "og:description", content: s.excerpt },
         { property: "og:type", content: "article" },
-        { property: "og:image", content: s.cover },
-        { name: "twitter:image", content: s.cover },
+        { property: "og:image", content: absoluteCoverUrl(s.cover) },
+        { name: "twitter:image", content: absoluteCoverUrl(s.cover) },
       ],
     };
   },
@@ -93,55 +94,71 @@ function StoryPage() {
   const lang = useLanguage();
   const t = translations[lang];
 
-  const midpoint = Math.ceil(story.body.length / 2);
-  const firstHalf = story.body.slice(0, midpoint);
-  const secondHalf = story.body.slice(midpoint);
+  const third = Math.ceil(story.body.length / 3);
+  const partOne = story.body.slice(0, third);
+  const partTwo = story.body.slice(third, third * 2);
+  const partThree = story.body.slice(third * 2);
 
   return (
     <div className="min-h-screen bg-paper text-ink font-sans selection:bg-accent/10">
       <SiteHeader />
 
-      <article>
-        {/* Hero */}
+      <article itemScope itemType="https://schema.org/Article">
         <header className="max-w-3xl mx-auto px-6 pt-12 md:pt-16 pb-12 text-center">
           <Link
-            to="/"
-            className="text-xs font-semibold text-accent uppercase tracking-widest"
+            to="/categoria/$slug"
+            params={{ slug: story.categorySlug }}
+            className="text-xs font-semibold text-accent uppercase tracking-widest hover:underline"
           >
             {story.category}
           </Link>
-          <h1 className="font-serif text-4xl md:text-6xl leading-tight mt-6 mb-8 text-balance">
+          <h1 className="font-serif text-4xl md:text-6xl leading-tight mt-6 mb-6 text-balance" itemProp="headline">
             {story.title}
           </h1>
+          <p className="font-serif text-lg text-ink/70 leading-relaxed max-w-xl mx-auto" itemProp="description">
+            {story.excerpt}
+          </p>
         </header>
 
-        {/* Cover */}
         <div className="max-w-5xl mx-auto px-6 mb-16">
           <img
             src={story.cover}
             alt={story.title}
             width={1200}
             height={800}
+            itemProp="image"
             className="w-full aspect-[3/2] object-cover rounded-sm outline-1 -outline-offset-1 outline-black/5"
           />
         </div>
 
-        {/* Body */}
-        <div className="max-w-2xl mx-auto px-6 font-serif text-lg leading-[1.85] text-ink/90 space-y-7">
-          {firstHalf.map((p: string, i: number) => (
-            <p key={i} className={i === 0 ? "first-letter:font-black first-letter:text-6xl first-letter:float-left first-letter:mr-3 first-letter:leading-[0.9] first-letter:text-accent" : ""}>
+        <div className="max-w-2xl mx-auto px-6 font-serif text-lg leading-[1.85] text-ink/90 space-y-7" itemProp="articleBody">
+          {partOne.map((p: string, i: number) => (
+            <p key={`a-${i}`} className={i === 0 ? "first-letter:font-black first-letter:text-6xl first-letter:float-left first-letter:mr-3 first-letter:leading-[0.9] first-letter:text-accent" : ""}>
               {p}
             </p>
           ))}
 
-          {/* In-Article Ad */}
+          {partTwo.length > 0 && (
+            <>
+              <h2 className="font-serif text-2xl md:text-3xl text-ink mt-12 mb-4">{t.storyPartTwo}</h2>
+              {partTwo.map((p: string, i: number) => (
+                <p key={`b-${i}`}>{p}</p>
+              ))}
+            </>
+          )}
+
           <div className="my-12 py-8 border-y border-ink/10 flex justify-center">
             <AdSlot variant="inline" />
           </div>
 
-          {secondHalf.map((p: string, i: number) => (
-            <p key={i}>{p}</p>
-          ))}
+          {partThree.length > 0 && (
+            <>
+              <h2 className="font-serif text-2xl md:text-3xl text-ink mt-12 mb-4">{t.storyPartThree}</h2>
+              {partThree.map((p: string, i: number) => (
+                <p key={`c-${i}`}>{p}</p>
+              ))}
+            </>
+          )}
         </div>
 
       </article>

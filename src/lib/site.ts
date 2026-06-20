@@ -3,7 +3,7 @@ export const SITE_NAME = "Contos & Crônicas";
 export const SITE_TAGLINE = "Histórias para ler com calma";
 
 export const SITE_DESCRIPTION =
-  "Um refúgio digital para amantes da palavra escrita. Contos, crônicas, memórias e ensaios em português.";
+  "Um refúgio digital para amantes da palavra escrita. Contos, crônicas e memórias literárias em português.";
 
 export const CONTACT_EMAIL = "redacao@dramatica.blog";
 

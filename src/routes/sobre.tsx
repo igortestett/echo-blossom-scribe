@@ -52,7 +52,7 @@ function SobrePage() {
             <p>
               O <strong>{t.siteName}</strong> nasceu de uma vontade simples: dar tempo às palavras num
               mundo que insiste em consumi-las depressa. Somos um espaço editorial independente
-              dedicado à ficção curta, crônicas urbanas, memórias e ensaios.
+              dedicado à ficção curta, crônicas urbanas e memórias literárias.
             </p>
             <p>
               Publicamos textos originais, revisados e pensados para leitura pausada — no computador,
@@ -103,7 +103,7 @@ function SobrePage() {
             <p>
               <strong>{t.siteName}</strong> was born from a simple desire: to give time to words in a
               world that insists on consuming them quickly. We are an independent editorial space
-              dedicated to short fiction, urban chronicles, memories, and essays.
+              dedicated to short fiction, urban chronicles, and literary memories.
             </p>
             <p>
               We publish original, reviewed texts designed for slow reading — on computers,
@@ -154,7 +154,7 @@ function SobrePage() {
             <p>
               <strong>{t.siteName}</strong> nació de un deseo sencillo: dar tiempo a las palabras en un
               mundo que insiste en consumirlas rápido. Somos un espacio editorial independiente
-              dedicado a la ficción corta, crónicas urbanas, memorias y ensayos.
+              dedicado a la ficción corta, crónicas urbanas y memorias literarias.
             </p>
             <p>
               Publicamos textos originales, revisados y diseñados para una lectura pausada — en computadora,

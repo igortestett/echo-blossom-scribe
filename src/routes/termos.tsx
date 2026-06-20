@@ -48,7 +48,7 @@ function TermosPage() {
 
           <h2>1. Objeto do site</h2>
           <p>
-            O {t.siteName} publica contos, crônicas, memórias e ensaios, com fins
+            O {t.siteName} publica contos, crônicas e memórias literárias, com fins
             culturais, informativos e de entretenimento. O conteúdo é de autoria própria ou licenciada
             para publicação neste site.
           </p>
@@ -130,7 +130,7 @@ function TermosPage() {
 
           <h2>1. Purpose of the site</h2>
           <p>
-            {t.siteName} publishes short stories, chronicles, memories, and essays for cultural,
+            {t.siteName} publishes short stories, chronicles, and literary memories for cultural,
             informative, and entertainment purposes. The content is of our own authorship or licensed
             for publication on this site.
           </p>
@@ -211,7 +211,7 @@ function TermosPage() {
 
           <h2>1. Objeto del sitio</h2>
           <p>
-            {t.siteName} publica cuentos, crónicas, memorias y ensayos con fines culturales,
+            {t.siteName} publica cuentos, crónicas y memorias literarias con fines culturales,
             informativos y de entretenimiento. El contenido es de autoría propia o licenciado para
             su publicación en este sitio.
           </p>

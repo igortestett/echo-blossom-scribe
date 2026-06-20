@@ -61,7 +61,7 @@ export const translations = {
   pt: {
     siteName: "Contos & Crônicas",
     siteTagline: "Histórias para ler com calma",
-    siteDescription: "Um refúgio digital para amantes da palavra escrita. Contos, crônicas, memórias e ensaios.",
+    siteDescription: "Um refúgio digital para amantes da palavra escrita. Contos, crônicas e memórias literárias em português.",
     
     // Navegação
     navFiction: "Ficção",
@@ -117,13 +117,17 @@ export const translations = {
 
     // Detalhes da História
     relatedStories: "Leia também",
+    storyPartTwo: "O desenrolar da história",
+    storyPartThree: "Desfecho",
+    menuOpen: "Abrir menu",
+    menuClose: "Fechar menu",
     backToHome: "Voltar para o início",
     byCategory: "Histórias em",
   },
   en: {
     siteName: "Tales & Chronicles",
     siteTagline: "Stories to read calmly",
-    siteDescription: "A digital refuge for lovers of the written word. Short stories, chronicles, memories, and essays.",
+    siteDescription: "A digital refuge for lovers of the written word. Short stories, chronicles, and literary memories.",
     
     // Navigation
     navFiction: "Fiction",
@@ -179,13 +183,17 @@ export const translations = {
 
     // Story Details
     relatedStories: "Recommended reading",
+    storyPartTwo: "The story unfolds",
+    storyPartThree: "Resolution",
+    menuOpen: "Open menu",
+    menuClose: "Close menu",
     backToHome: "Back to home",
     byCategory: "Stories in",
   },
   es: {
     siteName: "Cuentos y Crónicas",
     siteTagline: "Historias para leer con calma",
-    siteDescription: "Un refugio digital para los amantes de la palabra escrita. Cuentos, crónicas, memorias y ensayos.",
+    siteDescription: "Un refugio digital para los amantes de la palabra escrita. Cuentos, crónicas y memorias literarias.",
     
     // Navigation
     navFiction: "Ficción",
@@ -241,6 +249,10 @@ export const translations = {
 
     // Story Details
     relatedStories: "Lecturas recomendadas",
+    storyPartTwo: "El despliegue de la historia",
+    storyPartThree: "Desenlace",
+    menuOpen: "Abrir menú",
+    menuClose: "Cerrar menú",
     backToHome: "Volver al inicio",
     byCategory: "Historias en",
   }

@@ -224,9 +224,18 @@ const stories = [
   },
 ];
 
+import { storiesOriginal1to9 } from "./generate-stories-content-data-original-1-9.mjs";
+import { storiesOriginal10to17 } from "./generate-stories-content-data-original-10-17.mjs";
 import { stories2to5 } from "./generate-stories-content-data.mjs";
 import { stories345 } from "./generate-stories-content-data-345.mjs";
-stories.push(...stories2to5, ...stories345);
+import { storiesNew23to30 } from "./generate-stories-content-data-new-23-30.mjs";
+stories.push(
+  ...storiesOriginal1to9,
+  ...storiesOriginal10to17,
+  ...stories2to5,
+  ...stories345,
+  ...storiesNew23to30,
+);
 
 mkdirSync(OUT_DIR, { recursive: true });
 

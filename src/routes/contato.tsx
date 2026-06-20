@@ -1,3 +1,4 @@
+import { useState, type FormEvent } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { LegalPageLayout } from "@/components/LegalPageLayout";
 import { CONTACT_EMAIL } from "@/lib/site";
@@ -25,6 +26,101 @@ export const Route = createFileRoute("/contato")({
   component: ContatoPage,
 });
 
+function ContactForm() {
+  const lang = useLanguage();
+  const t = translations[lang];
+  const [sent, setSent] = useState(false);
+
+  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const form = event.currentTarget;
+    const data = new FormData(form);
+    const name = String(data.get("name") ?? "");
+    const email = String(data.get("email") ?? "");
+    const subject = String(data.get("subject") ?? t.navContact);
+    const message = String(data.get("message") ?? "");
+    const body = [
+      lang === "pt" ? `Nome: ${name}` : lang === "es" ? `Nombre: ${name}` : `Name: ${name}`,
+      lang === "pt" ? `E-mail: ${email}` : lang === "es" ? `Correo: ${email}` : `Email: ${email}`,
+      "",
+      message,
+    ].join("\n");
+    const mailto = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = mailto;
+    setSent(true);
+    form.reset();
+  }
+
+  if (sent) {
+    return (
+      <p className="rounded-sm border border-accent/20 bg-accent/5 px-4 py-3 text-sm text-ink/80" role="status">
+        {t.contactSuccess}
+      </p>
+    );
+  }
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-5 not-prose">
+      <div>
+        <label htmlFor="contact-name" className="block text-sm font-medium mb-1.5">
+          {t.contactName}
+        </label>
+        <input
+          id="contact-name"
+          name="name"
+          type="text"
+          required
+          autoComplete="name"
+          className="w-full rounded-sm border border-ink/15 bg-paper px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-accent/30"
+        />
+      </div>
+      <div>
+        <label htmlFor="contact-email" className="block text-sm font-medium mb-1.5">
+          {t.contactEmail}
+        </label>
+        <input
+          id="contact-email"
+          name="email"
+          type="email"
+          required
+          autoComplete="email"
+          className="w-full rounded-sm border border-ink/15 bg-paper px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-accent/30"
+        />
+      </div>
+      <div>
+        <label htmlFor="contact-subject" className="block text-sm font-medium mb-1.5">
+          {t.contactSubject}
+        </label>
+        <input
+          id="contact-subject"
+          name="subject"
+          type="text"
+          required
+          className="w-full rounded-sm border border-ink/15 bg-paper px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-accent/30"
+        />
+      </div>
+      <div>
+        <label htmlFor="contact-message" className="block text-sm font-medium mb-1.5">
+          {t.contactMessage}
+        </label>
+        <textarea
+          id="contact-message"
+          name="message"
+          required
+          rows={6}
+          className="w-full rounded-sm border border-ink/15 bg-paper px-3 py-2 text-sm resize-y focus:outline-none focus:ring-2 focus:ring-accent/30"
+        />
+      </div>
+      <button
+        type="submit"
+        className="inline-flex items-center justify-center rounded-sm bg-accent px-5 py-2.5 text-sm font-semibold text-paper hover:bg-accent/90 transition-colors"
+      >
+        {t.contactSend}
+      </button>
+    </form>
+  );
+}
+
 function ContatoPage() {
   const lang = useLanguage();
   const t = translations[lang];
@@ -38,8 +134,11 @@ function ContatoPage() {
         <>
           <p>
             O <strong>{t.siteName}</strong> é um projeto editorial independente. Adoramos ouvir leitores,
-            escritores e parceiros. Utilize os canais abaixo conforme o assunto.
+            escritores e parceiros. Utilize o formulário abaixo ou os canais por e-mail conforme o assunto.
           </p>
+
+          <h2>Envie uma mensagem</h2>
+          <ContactForm />
 
           <h2>Redação e colaborações</h2>
           <p>
@@ -92,8 +191,11 @@ function ContatoPage() {
         <>
           <p>
             <strong>{t.siteName}</strong> is an independent editorial project. We love hearing from readers,
-            writers, and partners. Use the channels below according to the topic.
+            writers, and partners. Use the form below or the email channels according to your topic.
           </p>
+
+          <h2>Send a message</h2>
+          <ContactForm />
 
           <h2>Editorial and collaborations</h2>
           <p>
@@ -146,8 +248,11 @@ function ContatoPage() {
         <>
           <p>
             <strong>{t.siteName}</strong> es un proyecto editorial independiente. Nos encanta escuchar a lectores,
-            escritores y socios. Utilice los canales a continuación según el tema.
+            escritores y socios. Utilice el formulario a continuación o los canales de correo según el tema.
           </p>
+
+          <h2>Enviar un mensaje</h2>
+          <ContactForm />
 
           <h2>Redacción y colaboraciones</h2>
           <p>

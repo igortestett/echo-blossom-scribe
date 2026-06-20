@@ -8,6 +8,8 @@ export function SiteFooter() {
   const t = translations[lang];
 
   const footerLinks = [
+    { to: "/categoria/$slug" as const, params: { slug: "ficcao" }, label: t.navFiction },
+    { to: "/categoria/$slug" as const, params: { slug: "memorias" }, label: t.navMemories },
     { to: "/sobre" as const, label: t.navAbout },
     { to: "/contato" as const, label: t.navContact },
     { to: "/privacidade" as const, label: t.privacyPolicy },
@@ -31,7 +33,12 @@ export function SiteFooter() {
           </h3>
           <nav className="flex flex-col gap-2 text-sm text-paper/70" aria-label="Links do rodapé">
             {footerLinks.map((link) => (
-              <Link key={link.to} to={link.to} className="hover:text-paper transition-colors">
+              <Link
+                key={link.label}
+                to={link.to}
+                params={"params" in link ? link.params : undefined}
+                className="hover:text-paper transition-colors"
+              >
                 {link.label}
               </Link>
             ))}

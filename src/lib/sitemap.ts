@@ -27,10 +27,16 @@ export function getSiteUrlForLanguage(lang: Language, apexDomain: string): strin
   return `https://${lang}.${apexDomain}`;
 }
 
+const CATEGORY_PAGES: SitemapEntry[] = [
+  { path: "/categoria/ficcao", changefreq: "weekly", priority: "0.7" },
+  { path: "/categoria/memorias", changefreq: "weekly", priority: "0.7" },
+];
+
 export function getSitemapEntries(lang: Language): SitemapEntry[] {
   const slugs = getStaticStoriesForLanguage(lang).map((story) => story.slug);
   return [
     ...STATIC_PAGES,
+    ...CATEGORY_PAGES,
     ...slugs.map((slug) => ({
       path: `/historia/${slug}`,
       changefreq: "monthly" as const,

@@ -20,6 +20,15 @@ import coverMares from "@/assets/covers/cover-o-arquivo-das-mares-baixas.jpg";
 import coverSala from "@/assets/covers/cover-sala-de-espera-do-mundo.jpg";
 import coverMuralhas from "@/assets/covers/cover-as-muralhas-de-sal.jpg";
 import coverCafe from "@/assets/covers/cover-o-cafe-da-meia-luz.jpg";
+import coverMapario from "@/assets/covers/cover-o-mapario-das-horas-perdidas.jpg";
+import coverLivraria from "@/assets/covers/cover-a-livraria-de-meia-noite.jpg";
+import coverBanco from "@/assets/covers/cover-memorias-de-um-banco-de-praca.jpg";
+import coverSombras from "@/assets/covers/cover-o-fotografo-das-sombras-longas.jpg";
+import coverHotel from "@/assets/covers/cover-cartas-na-gaveta-do-hotel.jpg";
+import coverPonte from "@/assets/covers/cover-a-ponte-dos-passos-contados.jpg";
+import coverJardineiro from "@/assets/covers/cover-o-jardineiro-de-inverno.jpg";
+import coverEstante from "@/assets/covers/cover-a-estante-infinita.jpg";
+import { getSiteUrl } from "@/lib/site";
 
 export type Story = {
   slug: string;
@@ -56,8 +65,26 @@ export const coversBySlug: Record<string, string> = {
   "sala-de-espera-do-mundo": coverSala,
   "as-muralhas-de-sal": coverMuralhas,
   "o-cafe-da-meia-luz": coverCafe,
+  "o-mapario-das-horas-perdidas": coverMapario,
+  "a-livraria-de-meia-noite": coverLivraria,
+  "memorias-de-um-banco-de-praca": coverBanco,
+  "o-fotografo-das-sombras-longas": coverSombras,
+  "cartas-na-gaveta-do-hotel": coverHotel,
+  "a-ponte-dos-passos-contados": coverPonte,
+  "o-jardineiro-de-inverno": coverJardineiro,
+  "a-estante-infinita": coverEstante,
 };
 
 export function coverFor(slug: string): string {
   return coversBySlug[slug] ?? coverOndeOMar;
+}
+
+/** URL absoluta da capa para Open Graph / Twitter Cards. */
+export function absoluteCoverUrl(coverPath: string): string {
+  if (coverPath.startsWith("http://") || coverPath.startsWith("https://")) {
+    return coverPath;
+  }
+  const base = getSiteUrl().replace(/\/$/, "");
+  const path = coverPath.startsWith("/") ? coverPath : `/${coverPath}`;
+  return `${base}${path}`;
 }
